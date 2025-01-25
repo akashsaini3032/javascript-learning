@@ -1,5 +1,5 @@
 function okk(){
-    console.log("okk");
+    console.log("akash");
 }
 
 okk();
