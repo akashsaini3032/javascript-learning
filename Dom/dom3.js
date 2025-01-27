@@ -1,9 +1,4 @@
-function saini(){
-    let Imgchange=document.querySelector("#Img")
-    Imgchange.src="h5.jpg"
-
-    
-
-    
-    
-}
+function okk(){
+    let show=document.querySelector("#ok")
+    show.src="blog1.jpg"
+  }  

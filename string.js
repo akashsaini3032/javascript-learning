@@ -10,8 +10,8 @@ function string(){
 
    // document.write(a.length) //return the length of string
 
-   let a="javascriptisessay" //string first letter 0 se starthota hai
-    document.write(a.slice(4,12)) 
+   //let a="javascriptisessay" //string first letter 0 se starthota hai
+    //document.write(a.slice(4,12)) 
     
 }
 

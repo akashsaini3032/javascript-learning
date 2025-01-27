@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorite Subject</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        h4 {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="promptSubject()">Enter Favorite Subject</button>
+    <button onclick="displaySubject()">Display Favorite Subject</button>
+    <h4 id="subjectDisplay"></h4>
+
+    <script>
+        let favoriteSubject = "";
+
+        function promptSubject() {
+            favoriteSubject = prompt("Enter your favorite subject:");
+        }
+
+        function displaySubject() {
+            document.getElementById("subjectDisplay").innerHTML = "Your favorite subject is: " + favoriteSubject;
+        }
+    </script>
+</body>
+</html>
