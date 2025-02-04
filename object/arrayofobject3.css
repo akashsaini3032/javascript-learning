@@ -1,0 +1,10 @@
+table{
+    width: 800px;
+    height: auto;
+    background-color: aqua;
+}
+
+thead{
+    background-color: red;
+    font-size: 30px;
+}

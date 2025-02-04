@@ -1,0 +1,14 @@
+#ak{
+    border: 2px solid gray;
+    background-color: aqua;
+    color: brown;
+    display: flex;
+    gap: 40px;
+    padding-left: 20px;
+    
+}
+
+#ak h1{
+    color: green;
+    font-size: 30px;
+}
