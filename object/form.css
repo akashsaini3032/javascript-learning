@@ -1,0 +1,17 @@
+#ak{
+    border: 2px solid black;
+    padding: 30px;
+    gap: 20px;
+    background-color: bisque;
+    color: black;
+    width: 500px;
+    height: auto;
+    padding-left: 20%;
+}
+
+#bk{
+    padding: 20px 29px;
+    color: white;
+    border-radius: 10px;
+    background-color: red;
+}

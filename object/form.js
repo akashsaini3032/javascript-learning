@@ -11,7 +11,7 @@ let sub = () => {
     let errpass = document.querySelector("#errpass");
     let errcpass = document.querySelector("#errcpass");
 
-    if (inpname === "") {
+    if (inpname == "") {
         errname.innerHTML = "please enter your name";
         errname.style.color = "red";
         return false;
@@ -39,5 +39,40 @@ let sub = () => {
         errcpass.innerHTML = "please confirm your Password";
         errcpass.style.color = "red";
         return false;
+    }
+
+    //isNaN  this property is not a number true mean not a number
+
+    else if(isNaN(inpnum) ){ //if number ans will be false
+        errnum.innerHTML="Please Enter number only"
+        return false
+
+    }
+
+    else if(inpnum.length!=10){
+        errnum.innerHTML="Please Enter valid number"
+        return false
+    }
+
+    //includes check karta hai string me include hai ki nahi
+    // ! isiliye lagaya kyu ki include check karta hai yah character hai ki nahi but humko chahiye na ho isiliye aage ! laga diya
+
+    else if(!(inpemail.includes("@") && inpemail.includes(".com"))){
+        erremail.innerHTML="please enter valid email"
+        return false
+    }
+
+    else if(inpcpass!=inppass){
+        errcpass.innerHTML="please enter same password"
+        //inpcpass.value=" "
+        //or
+        document.querySelector("#cpass").value=""
+        return false
+    }
+    
+    else if(!(inppass.match([/1234567890 /]) && inppass.match([/!@#$%^&*()_+ /]) && inppass.match([/a-z /]) && inppass.match([/A-Z /]))){
+        errpass.innerHTML="please enter strong password"
+
+        return false
     }
 };

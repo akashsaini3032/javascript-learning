@@ -19,6 +19,10 @@ let students=[
     }
 ]
 
+console.log(students[1].name) //sirf ek ka hi chahiye to
+//array object print nahi hota home screen pe sirf inke element print hota hai
+//data element print ho jata hai
+
 let display=document.querySelector("#ak")
 students.map((e)=>{
     display.innerHTML+=`
