@@ -17,31 +17,36 @@ let sub = () => {
         return false;
     }
 
-    if (inpemail === "") {
+    else if (inpemail === "") {
         erremail.innerHTML = "please enter your email";
         erremail.style.color = "red";
         return false;
     }
 
-    if (inpnum === "") {
+    else if (inpnum === "") {
         errnum.innerHTML = "please enter your number";
         errnum.style.color = "red";
         return false;
     }
 
-    if (inppass === "") {
+    else if (inppass === "") {
         errpass.innerHTML = "please enter your Password";
         errpass.style.color = "red";
         return false;
     }
 
-    if (inpcpass === "") {
+    else if (inpcpass === "") {
         errcpass.innerHTML = "please confirm your Password";
         errcpass.style.color = "red";
         return false;
     }
 
     //isNaN  this property is not a number true mean not a number
+
+    else if(!(inpemail.includes("@") && inpemail.includes(".com"))){
+        erremail.innerHTML="please enter valid email"
+        return false
+    }
 
     else if(isNaN(inpnum) ){ //if number ans will be false
         errnum.innerHTML="Please Enter number only"
@@ -57,16 +62,14 @@ let sub = () => {
     //includes check karta hai string me include hai ki nahi
     // ! isiliye lagaya kyu ki include check karta hai yah character hai ki nahi but humko chahiye na ho isiliye aage ! laga diya
 
-    else if(!(inpemail.includes("@") && inpemail.includes(".com"))){
-        erremail.innerHTML="please enter valid email"
-        return false
-    }
+    
 
     else if(inpcpass!=inppass){
         errcpass.innerHTML="please enter same password"
         //inpcpass.value=" "
         //or
         document.querySelector("#cpass").value=""
+        element.focus();
         return false
     }
     
