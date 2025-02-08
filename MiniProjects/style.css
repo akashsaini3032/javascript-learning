@@ -1,0 +1,50 @@
+body {
+    background-color: #2C2C2C;
+    color: #FFFFFF;
+    font-family: Arial, sans-serif;
+}
+
+table {
+    margin: auto;
+    border-collapse: separate;
+    border-spacing: 15px;
+    border: 3px solid #00BFFF; /* Add this line for the outer border */
+    border-radius: 15px; /* Add this line for rounded corners */
+    padding: 20px; /* Add this line for padding inside the border */
+    background-color: #1E1E1E; /* Add this line for the background color inside the border */
+}
+
+#display {
+    background-color: #1E1E1E;
+    color: #00BFFF;
+    text-align: right;
+    padding: 20px;
+    font-size: 24px;
+    border-radius: 10px;
+    border: 2px solid #00BFFF;
+}
+
+td {
+    background-color: #3B3B3B;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 20px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 2px solid #00BFFF;
+}
+
+td:hover {
+    background-color: #00BFFF;
+    color: #2C2C2C;
+}
+
+td:active {
+    background-color: #00A0D0;
+    color: #2C2C2C;
+}
+
+#display:empty::before {
+    content: "0";
+}
