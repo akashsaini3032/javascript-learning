@@ -8,7 +8,7 @@ table {
     margin: auto; /* Table ko center align karna */
     border-collapse: separate; /* Borders ko collapse nahi karna */
     border-spacing: 15px; /* Borders ke beech mein 15px ka gap */
-    border: 3px solid #00BFFF; /* Outer border ka color light blue */
+    border: 3px solid #e7660f; /* Outer border ka color light blue */
     border-radius: 15px; /* Borders ke corners round banana */
     padding: 20px; /* Border ke andar 20px ka padding */
     background-color: #1E1E1E; /* Border ke andar background color dark grey */
@@ -21,7 +21,7 @@ table {
     padding: 20px; /* Display ke andar 20px ka padding */
     font-size: 24px; /* Text ka size 24px */
     border-radius: 10px; /* Display ke corners round banana */
-    border: 2px solid #00BFFF; /* Display ka border light blue */
+    border: 2px solid #f54c0a; /* Display ka border light blue */
 }
 
 td {
@@ -32,11 +32,11 @@ td {
     font-size: 18px; /* Text ka size 18px */
     border-radius: 10px; /* Cell ke corners round banana */
     cursor: pointer; /* Cell ko clickable banana */
-    border: 2px solid #00BFFF; /* Cell ka border light blue */
+    border: 2px solid #ef3106; /* Cell ka border light blue */
 }
 
 td:hover {
-    background-color: #00BFFF; /* Hover karne pe background color light blue */
+    background-color: red; /* Hover karne pe background color light blue */
     color: #2C2C2C; /* Hover karne pe text ka color dark grey */
 }
 
@@ -64,15 +64,15 @@ td:active {
         padding-top: 50px;
         border-spacing: 8px; /* Space between buttons */
         border-radius: 20px; /* Smooth corners */
-        background-color: #2a2a2a; /* Dark theme */
+        background-color: #8bf7e0; /* Dark theme */
     }
 
     #display {
         font-size: 28px; /* Readable text */
         padding: 15px;
         height: 80px; /* Prominent display area */
-        color: #fff;
-        background-color: #333; /* Display box background */
+        color: #444;;
+        background-color: #edb97e; /* Display box background */
         text-align: right; /* Align text to the right */
         border-radius: 10px;
     }
@@ -84,22 +84,10 @@ td:active {
         border-radius: 50%; /* Circular buttons */
         background-color: #444; /* Button background */
         color: #fff; /* Button text color */
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Button shadow */
+        box-shadow: 4px 8px 10px rgba(4, 234, 69, 0.3); /* Button shadow */
     }
 
-    /* Special Buttons */
-    .operator {
-        background-color: #ff9800; /* Orange for operators */
-    }
-
-    .equals {
-        background-color: #6200ea; /* Purple for equals */
-        color: #fff;
-    }
-
-    .clear {
-        background-color: #ff5252; /* Red for clear */
-        color: #fff;
-    }
+    
+    
 }
 
