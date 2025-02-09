@@ -1,50 +1,105 @@
 body {
-    background-color: #2C2C2C;
-    color: #FFFFFF;
-    font-family: Arial, sans-serif;
+    background-color: #2C2C2C; /* Background color ka grey shade */
+    color: #FFFFFF; /* Text ka color white */
+    font-family: Arial, sans-serif; /* Text ka style Arial font mein */
 }
 
 table {
-    margin: auto;
-    border-collapse: separate;
-    border-spacing: 15px;
-    border: 3px solid #00BFFF; /* Add this line for the outer border */
-    border-radius: 15px; /* Add this line for rounded corners */
-    padding: 20px; /* Add this line for padding inside the border */
-    background-color: #1E1E1E; /* Add this line for the background color inside the border */
+    margin: auto; /* Table ko center align karna */
+    border-collapse: separate; /* Borders ko collapse nahi karna */
+    border-spacing: 15px; /* Borders ke beech mein 15px ka gap */
+    border: 3px solid #00BFFF; /* Outer border ka color light blue */
+    border-radius: 15px; /* Borders ke corners round banana */
+    padding: 20px; /* Border ke andar 20px ka padding */
+    background-color: #1E1E1E; /* Border ke andar background color dark grey */
 }
 
 #display {
-    background-color: #1E1E1E;
-    color: #00BFFF;
-    text-align: right;
-    padding: 20px;
-    font-size: 24px;
-    border-radius: 10px;
-    border: 2px solid #00BFFF;
+    background-color: #1E1E1E; /* Display ka background color dark grey */
+    color: #00BFFF; /* Text ka color light blue */
+    text-align: right; /* Text ko right align karna */
+    padding: 20px; /* Display ke andar 20px ka padding */
+    font-size: 24px; /* Text ka size 24px */
+    border-radius: 10px; /* Display ke corners round banana */
+    border: 2px solid #00BFFF; /* Display ka border light blue */
 }
 
 td {
-    background-color: #3B3B3B;
-    color: #FFFFFF;
-    text-align: center;
-    padding: 20px;
-    font-size: 18px;
-    border-radius: 10px;
-    cursor: pointer;
-    border: 2px solid #00BFFF;
+    background-color: #3B3B3B; /* Cell ka background color dark grey */
+    color: #FFFFFF; /* Text ka color white */
+    text-align: center; /* Text ko center align karna */
+    padding: 20px; /* Cell ke andar 20px ka padding */
+    font-size: 18px; /* Text ka size 18px */
+    border-radius: 10px; /* Cell ke corners round banana */
+    cursor: pointer; /* Cell ko clickable banana */
+    border: 2px solid #00BFFF; /* Cell ka border light blue */
 }
 
 td:hover {
-    background-color: #00BFFF;
-    color: #2C2C2C;
+    background-color: #00BFFF; /* Hover karne pe background color light blue */
+    color: #2C2C2C; /* Hover karne pe text ka color dark grey */
 }
 
 td:active {
-    background-color: #00A0D0;
-    color: #2C2C2C;
+    background-color: #00A0D0; /* Click karne pe background color dark blue */
+    color: #2C2C2C; /* Click karne pe text ka color dark grey */
 }
 
 #display:empty::before {
-    content: "0";
+    content: "0"; /* Display empty hone pe zero show karna */
 }
+
+/* Mobile Styles (Max Width: 768px) */
+
+@media screen and (max-width: 768px) {
+    body {
+        background-color: #1c1c1c; /* Dark background for modern look */
+        color: #fff; /* White text */
+    }
+
+    table {
+        width: 90%; /* Center and fit table */
+        margin: 20px auto;
+        padding: 15px;
+        padding-top: 50px;
+        border-spacing: 8px; /* Space between buttons */
+        border-radius: 20px; /* Smooth corners */
+        background-color: #2a2a2a; /* Dark theme */
+    }
+
+    #display {
+        font-size: 28px; /* Readable text */
+        padding: 15px;
+        height: 80px; /* Prominent display area */
+        color: #fff;
+        background-color: #333; /* Display box background */
+        text-align: right; /* Align text to the right */
+        border-radius: 10px;
+    }
+
+    td {
+        padding: 15px; /* Comfortable button size */
+        font-size: 22px; /* Larger text */
+        text-align: center;
+        border-radius: 50%; /* Circular buttons */
+        background-color: #444; /* Button background */
+        color: #fff; /* Button text color */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Button shadow */
+    }
+
+    /* Special Buttons */
+    .operator {
+        background-color: #ff9800; /* Orange for operators */
+    }
+
+    .equals {
+        background-color: #6200ea; /* Purple for equals */
+        color: #fff;
+    }
+
+    .clear {
+        background-color: #ff5252; /* Red for clear */
+        color: #fff;
+    }
+}
+
