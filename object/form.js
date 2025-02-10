@@ -47,7 +47,7 @@ let sub = () => {
         erremail.innerHTML="please enter valid email"
         return false
     }
-
+//isNaN  this property is not a number true mean not a number
     else if(isNaN(inpnum) ){ //if number ans will be false
         errnum.innerHTML="Please Enter number only"
         return false
