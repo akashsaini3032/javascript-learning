@@ -14,7 +14,8 @@ function numb(){
 
     let dice=Math.floor(Math.random()*6+1);
     if(dice==1){
-        SharedWorker.innerHTM
+        
+        
     }
 
     

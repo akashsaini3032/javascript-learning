@@ -79,3 +79,5 @@ arr1=forEach((e)=>{
     console.log(e)(e*2);
 } )
 
+
+

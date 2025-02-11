@@ -1,72 +1,98 @@
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: #e0e0e0;
     font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
 }
 
-.dice {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+.container {
+    text-align: center;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
     margin-bottom: 20px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.dice-box {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    position: absolute;
 }
 
 .square {
     width: 100px;
     height: 100px;
     background-color: white;
-    border: 2px solid #333;
+    border: 2px solid #ccc;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
+    flex-wrap: wrap;
+    opacity: 0;
+    transition: opacity 0.3s;
 }
 
 .circle {
     width: 20px;
     height: 20px;
-    background-color: #333;
+    background-color: black;
     border-radius: 50%;
-    opacity: 0;
-    position: absolute;
+    margin: 5px;
 }
 
-#box1 .circle:nth-child(1) { top: 50%; left: 50%; transform: translate(-50%, -50%); }
-#box2 .circle:nth-child(1) { top: 30%; left: 30%; }
-#box2 .circle:nth-child(2) { top: 70%; left: 70%; }
-#box3 .circle:nth-child(1) { top: 20%; left: 20%; }
-#box3 .circle:nth-child(2) { top: 50%; left: 50%; transform: translate(-50%, -50%); }
-#box3 .circle:nth-child(3) { top: 80%; left: 80%; }
-#box4 .circle:nth-child(1) { top: 20%; left: 20%; }
-#box4 .circle:nth-child(2) { top: 20%; right: 20%; }
-#box4 .circle:nth-child(3) { bottom: 20%; left: 20%; }
-#box4 .circle:nth-child(4) { bottom: 20%; right: 20%; }
-#box5 .circle:nth-child(1) { top: 20%; left: 20%; }
-#box5 .circle:nth-child(2) { top: 20%; right: 20%; }
-#box5 .circle:nth-child(3) { top: 50%; left: 50%; transform: translate(-50%, -50%); }
-#box5 .circle:nth-child(4) { bottom: 20%; left: 20%; }
-#box5 .circle:nth-child(5) { bottom: 20%; right: 20%; }
-#box6 .circle:nth-child(1) { top: 20%; left: 20%; }
-#box6 .circle:nth-child(2) { top: 20%; right: 20%; }
-#box6 .circle:nth-child(3) { top: 50%; left: 20%; }
-#box6 .circle:nth-child(4) { top: 50%; right: 20%; }
-#box6 .circle:nth-child(5) { bottom: 20%; left: 20%; }
-#box6 .circle:nth-child(6) { bottom: 20%; right: 20%; }
+/* Responsive Styles */
+@media (max-width: 768px) {
+    button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
 
-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
+    .square {
+        width: 80px;
+        height: 80px;
+    }
+
+    .circle {
+        width: 16px;
+        height: 16px;
+        margin: 4px;
+    }
 }
 
-button:hover {
-    background-color: #0056b3;
+@media (max-width: 480px) {
+    button {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    .square {
+        width: 60px;
+        height: 60px;
+    }
+
+    .circle {
+        width: 12px;
+        height: 12px;
+        margin: 3px;
+    }
+
+    .dice-box {
+        gap: 8px;
+    }
 }

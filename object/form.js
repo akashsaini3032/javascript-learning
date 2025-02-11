@@ -1,81 +1,107 @@
+//meri original js iss file ki form copy js me hai
 let sub = () => {
     let inpname = document.querySelector("#name").value;
-    let inpemail = document.querySelector("#email").value;
     let inpnum = document.querySelector("#number").value;
+    let inpemail = document.querySelector("#email").value;
     let inppass = document.querySelector("#pass").value;
     let inpcpass = document.querySelector("#cpass").value;
-
+  
     let errname = document.querySelector("#errname");
-    let erremail = document.querySelector("#erremail");
     let errnum = document.querySelector("#errnum");
+    let erremail = document.querySelector("#erremail");
     let errpass = document.querySelector("#errpass");
     let errcpass = document.querySelector("#errcpass");
-
-    if (inpname == "") {
-        errname.innerHTML = "please enter your name";
-        errname.style.color = "red";
-        return false;
+  
+  
+    let isValid = true;
+  
+    // Name validation
+    if (inpname === "") {
+      errname.innerHTML = "Please enter the name";
+      errname.style.color = "red";
+      let border = document.querySelector(".name");
+      border.style.border = "2px solid red";
+      // let place =document.querySelector("#name").placeholder="enter your name";
+      isValid = false;
     }
-
-    else if (inpemail === "") {
-        erremail.innerHTML = "please enter your email";
-        erremail.style.color = "red";
-        return false;
+  
+    // Email validation
+    if (inpemail === "") {
+      erremail.innerHTML = "Please enter the email";
+      erremail.style.color = "red";
+      let border = document.querySelector(".email");
+      border.style.border = "2px solid red";
+  
+      isValid = false;
     }
-
-    else if (inpnum === "") {
-        errnum.innerHTML = "please enter your number";
-        errnum.style.color = "red";
-        return false;
+   
+    else if (!(inpemail.includes("@") && inpemail.includes(".com"))) {
+      erremail.innerHTML = "Please enter a valid email address";
+      erremail.style.color = "red";
+      isValid = false;
     }
-
-    else if (inppass === "") {
-        errpass.innerHTML = "please enter your Password";
-        errpass.style.color = "red";
-        return false;
+  
+    // Number validation
+    if (inpnum === "") {
+      errnum.innerHTML = "Please enter the number";
+      errnum.style.color = "red";
+      let border = document.querySelector(".number");
+      border.style.border = "2px solid red";
+      isValid = false;
     }
-
-    else if (inpcpass === "") {
-        errcpass.innerHTML = "please confirm your Password";
-        errcpass.style.color = "red";
-        return false;
+  
+     else if (isNaN(inpnum)) {
+      errnum.innerHTML = "Please enter a valid number";
+      errnum.style.color = "red";
+      isValid = false;
     }
-
-    //isNaN  this property is not a number true mean not a number
-
-    else if(!(inpemail.includes("@") && inpemail.includes(".com"))){
-        erremail.innerHTML="please enter valid email"
-        return false
+  
+     else if (inpnum.length !== 10) {
+      errnum.innerHTML = "Please enter a valid phone number (10 digits)";
+      errnum.style.color = "red";
+      isValid = false;
     }
-//isNaN  this property is not a number true mean not a number
-    else if(isNaN(inpnum) ){ //if number ans will be false
-        errnum.innerHTML="Please Enter number only"
-        return false
-
+  
+    // Password validation
+    if (inppass === "") {
+      errpass.innerHTML = "Please enter the Password";
+      let border = document.querySelector(".password");
+      border.style.border = "2px solid red";
+      errpass.style.color = "red";
+      isValid = false;
+    } else if (
+      !(
+        inppass.match(/[0-9]/) &&
+        inppass.match(/[!@#$%^&*()]/) &&
+        inppass.match(/[a-z]/) &&
+        inppass.match(/[A-Z]/)
+      )
+    ) {
+      errpass.innerHTML = "Password must contain at least 1 uppercase, 1 lowercase, 1 number, and 1 special character";
+      errpass.style.color = "red";
+      isValid = false;
     }
-
-    else if(inpnum.length!=10){
-        errnum.innerHTML="Please Enter valid number"
-        return false
+  
+    // Confirm Password validation
+    if (inpcpass === "") {
+      errcpass.innerHTML = "Please confirm your password";
+      errcpass.style.color = "red";
+      let border = document.querySelector(".confpass");
+      border.style.border = "2px solid red";
+      isValid = false;
     }
-
-    //includes check karta hai string me include hai ki nahi
-    // ! isiliye lagaya kyu ki include check karta hai yah character hai ki nahi but humko chahiye na ho isiliye aage ! laga diya
-
-    
-
-    else if(inpcpass!=inppass){
-        errcpass.innerHTML="please enter same password"
-        //inpcpass.value=" "
-        //or
-        document.querySelector("#cpass").value=""
-        element.focus();
-        return false
+  
+    else if (inpcpass !== inppass) {
+  
+      // let com=document.querySelector("#inppass").value.innerHTML="";
+      
+      errcpass.innerHTML = "Passwords do not match";
+      errcpass.style.color = "red";
+      let foc=  document.querySelector("#cpass").focus();
+      isValid = false;
+      let doc=document.querySelector("#cpass").value="";
     }
-    
-    else if(!(inppass.match([/1234567890 /]) && inppass.match([/!@#$%^&*()_+ /]) && inppass.match([/a-z /]) && inppass.match([/A-Z /]))){
-        errpass.innerHTML="please enter strong password"
-
-        return false
-    }
-};
+  
+    return isValid;
+  
+  };
