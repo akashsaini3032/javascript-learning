@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+   <h1 id="first">0</h1>
+   <h1 id="second">0</h1>
+   <h1 id="third">0</h1>
+   <button onclick="update">click to change the number </button>
+
+   <script>
+    function update(){
+        let one=document.getElementById("#first")
+        one=Math.floor(Math.random()*100)
+
+        let two=document.getElementById("#second")
+        two=Math.floor(Math.random()*100)
+        
+
+        let three=document.getElementById("#third")
+        three=Math.floor(Math.random()*100)
+        
+    }
+   </script>
+    
+</body>
+</html>
