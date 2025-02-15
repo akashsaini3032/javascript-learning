@@ -1,0 +1,61 @@
+/* Container ka design */
+body{
+    background-color: aquamarine;
+}
+.style {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 200px;
+    margin-top: 20%;
+    margin-left: 40%;
+    background-color: #282c34;
+    
+    box-shadow: 0 0 15px rgba(7, 214, 232, 0.922);
+    border-radius: 70px;
+  }
+  
+  /* Input field ka design */
+  input#number {
+    padding: 10px;
+    font-size: 1rem;
+    border: 2px solid #61dafb;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    width: 80%;
+    color: #fff;
+    background-color: #dfa2a7;
+  }
+  
+  /* h1 display ka design */
+  h1#showw {
+    font-size: 2rem;
+    color: #61dafb;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-size: 3rem;
+    color: #ef0909;
+    margin-bottom: 20px;
+  }
+  
+  /* Button ka design */
+  button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #f02106;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Hover effect */
+  button:hover {
+    background-color: #1de20b;
+  }
+  
