@@ -1,0 +1,60 @@
+
+    body {
+        font-family: Arial, sans-serif; /* Yeh Arial font use karta hai */
+        background-color: #f0f8ff; /* Background color set karta hai */
+        display: flex; /* Flexbox layout use karta hai */
+        justify-content: center; /* Content ko horizontally center karta hai */
+        align-items: center; /* Content ko vertically center karta hai */
+        height: 100vh; /* Height set karta hai pura viewport ke height ke barabar */
+        margin: 0; /* Body ke margin ko 0 set karta hai */
+    }
+
+    .style {
+        background-color: rgb(241, 212, 187); /* Background color set karta hai white */
+        border-radius: 10px; /* Rounded corners set karta hai */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect add karta hai */
+        padding: 20px; /* Padding set karta hai 20px */
+        text-align: center; /* Text ko center align karta hai */
+        width: 300px; /* Width set karta hai 300px */
+    }
+
+    h1#title {
+        color: #333; /* Text color set karta hai dark gray */
+        font-size: 24px; /* Font size set karta hai 24px */
+        margin-bottom: 20px; /* Margin bottom set karta hai 20px */
+    }
+
+    h1#title2, h1#title3 {
+        color: #666; /* Text color set karta hai light gray */
+        font-size: 16px; /* Font size set karta hai 16px */
+        margin: 10px 0; /* Top aur bottom margin set karta hai 10px */
+    }
+
+    input[type="number"] {
+        border: 1px solid #ccc; /* Border set karta hai light gray */
+        border-radius: 5px; /* Rounded corners set karta hai */
+        font-size: 16px; /* Font size set karta hai 16px */
+        padding: 10px; /* Padding set karta hai 10px */
+        width: calc(100% - 22px); /* Width set karta hai input field ke 100% minus padding aur border */
+    }
+
+    button {
+        background-color: #4CAF50; /* Background color set karta hai green */
+        border: none; /* Border hatata hai */
+        border-radius: 5px; /* Rounded corners set karta hai */
+        color: white; /* Text color set karta hai white */
+        cursor: pointer; /* Cursor ko pointer banata hai */
+        font-size: 16px; /* Font size set karta hai 16px */
+        margin-top: 20px; /* Margin top set karta hai 20px */
+        padding: 10px 20px; /* Padding set karta hai 10px top-bottom aur 20px left-right */
+    }
+
+    button:hover {
+        background-color: #f9521a; /* Background color change karta hai hover effect ke liye */
+    }
+
+    h1#showw {
+        color: #ff6347; /* Text color set karta hai red-orange */
+        font-size: 20px; /* Font size set karta hai 20px */
+        margin-top: 20px; /* Margin top set karta hai 20px */
+    }
