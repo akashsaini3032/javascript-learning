@@ -1,0 +1,82 @@
+/* Main form styling */
+#ak {
+    border: 2px solid #ccc;
+    padding: 20px;
+    margin: 0 auto;
+    background-color: #f8f8f8;
+    color: #333;
+    width: 100%;
+    max-width: 400px; /* Smaller form size */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    animation: glow 6s infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Input fields */
+#ak input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px; /* Slightly reduced margin */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    background-color: #fff;
+    color: #333;
+}
+
+/* Labels */
+#ak p {
+    margin: 0 0 5px 0;
+    color: red;
+    font-size: 12px;
+}
+
+/* Submit button */
+#bk {
+    width: 100%;
+    padding: 12px 0;
+    color: white;
+    border-radius: 5px;
+    background-color: #28a745;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#bk:hover {
+    background-color: #218838;
+}
+
+/* Glowing animation */
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 10px rgba(255, 99, 71, 0.5), 0 0 20px rgba(255, 99, 71, 0.5), 0 0 30px rgba(255, 99, 71, 0.5);
+    }
+    20% {
+        box-shadow: 0 0 10px rgba(255, 215, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.5), 0 0 30px rgba(255, 215, 0, 0.5);
+    }
+    40% {
+        box-shadow: 0 0 10px rgba(50, 205, 50, 0.5), 0 0 20px rgba(50, 205, 50, 0.5), 0 0 30px rgba(50, 205, 50, 0.5);
+    }
+    60% {
+        box-shadow: 0 0 10px rgba(30, 144, 255, 0.5), 0 0 20px rgba(30, 144, 255, 0.5), 0 0 30px rgba(30, 144, 255, 0.5);
+    }
+    80% {
+        box-shadow: 0 0 10px rgba(138, 43, 226, 0.5), 0 0 20px rgba(138, 43, 226, 0.5), 0 0 30px rgba(138, 43, 226, 0.5);
+    }
+    100% {
+        box-shadow: 0 0 10px rgba(255, 20, 147, 0.5), 0 0 20px rgba(255, 20, 147, 0.5), 0 0 30px rgba(255, 20, 147, 0.5);
+    }
+}
+
+/* Background behind the form */
+body {
+    background-color: #e0e0e0; /* Lighter background color */
+    position: relative;
+    height: 100vh;
+    margin: 0;
+}
