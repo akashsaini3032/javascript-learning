@@ -1,82 +1,67 @@
-/* Main form styling */
-#ak {
-    border: 2px solid #ccc;
-    padding: 20px;
-    margin: 0 auto;
-    background-color: #f8f8f8;
-    color: #333;
-    width: 100%;
-    max-width: 400px; /* Smaller form size */
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    animation: glow 6s infinite;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-/* Input fields */
-#ak input[type="text"] {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin-bottom: 15px; /* Slightly reduced margin */
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-    background-color: #fff;
-    color: #333;
-}
-
-/* Labels */
-#ak p {
-    margin: 0 0 5px 0;
-    color: red;
-    font-size: 12px;
-}
-
-/* Submit button */
-#bk {
-    width: 100%;
-    padding: 12px 0;
-    color: white;
-    border-radius: 5px;
-    background-color: #28a745;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-#bk:hover {
-    background-color: #218838;
-}
-
-/* Glowing animation */
-@keyframes glow {
-    0% {
-        box-shadow: 0 0 10px rgba(255, 99, 71, 0.5), 0 0 20px rgba(255, 99, 71, 0.5), 0 0 30px rgba(255, 99, 71, 0.5);
-    }
-    20% {
-        box-shadow: 0 0 10px rgba(255, 215, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.5), 0 0 30px rgba(255, 215, 0, 0.5);
-    }
-    40% {
-        box-shadow: 0 0 10px rgba(50, 205, 50, 0.5), 0 0 20px rgba(50, 205, 50, 0.5), 0 0 30px rgba(50, 205, 50, 0.5);
-    }
-    60% {
-        box-shadow: 0 0 10px rgba(30, 144, 255, 0.5), 0 0 20px rgba(30, 144, 255, 0.5), 0 0 30px rgba(30, 144, 255, 0.5);
-    }
-    80% {
-        box-shadow: 0 0 10px rgba(138, 43, 226, 0.5), 0 0 20px rgba(138, 43, 226, 0.5), 0 0 30px rgba(138, 43, 226, 0.5);
-    }
-    100% {
-        box-shadow: 0 0 10px rgba(255, 20, 147, 0.5), 0 0 20px rgba(255, 20, 147, 0.5), 0 0 30px rgba(255, 20, 147, 0.5);
-    }
-}
-
-/* Background behind the form */
 body {
-    background-color: #e0e0e0; /* Lighter background color */
-    position: relative;
+    background-image: url('signup.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     height: 100vh;
+}
+
+
+
+
+form {
+    position: relative;
+    width: 300px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    animation: formFadeIn 2s ease-in-out;
+}
+
+form p {
     margin: 0;
+    padding: 0;
+    color: #fff;
+}
+
+form input[type="text"], form input[type="number"], form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+
+form input[type="text"], form input[type="number"] {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+form input[type="submit"] {
+    background: rgba(0, 212, 255, 0.8);
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+form input[type="submit"]:hover {
+    background: rgba(0, 212, 255, 1);
+}
+
+form input[type="text"]:focus, form input[type="number"]:focus {
+    background: rgba(255, 255, 255, 0.4);
+    animation: inputGlow 1.5s infinite alternate;
+}
+
+@keyframes formFadeIn {
+    0% { opacity: 0; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes inputGlow {
+    0% { box-shadow: 0 0 5px rgba(0, 212, 255, 0.5); }
+    100% { box-shadow: 0 0 20px rgba(0, 212, 255, 1); }
 }

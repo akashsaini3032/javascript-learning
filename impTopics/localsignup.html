@@ -6,12 +6,19 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="">
+    <form action="" id="sign" border="1">
+        <p id="errname"></p>
         Enter Name: <input type="text" id="signupname"><br><br>
+        <p id="errnum"></p>
         Enter Number: <input type="number" id="signupnum"><br><br>
+        <p id="erremail"></p>
         Enter Email: <input type="text" id="signupemail"><br><br>
+        <p id="errpass"></p>
         Enter Pass: <input type="text" id="signuppass"><br><br>
-        <input type="submit" onclick="return signup()">
+        <p id="errcpass"></p>
+        Enter CPass: <input type="text" id="signupcpass"><br><br>
+
+        <input type="submit" value="Signup" id="button" onclick="return signup()">
     </form>
     <script src="local.js"></script>
 </body>
