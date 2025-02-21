@@ -1,67 +1,86 @@
 body {
-    background-image: url('signup.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 100vh;
-}
-
-
-
-
-form {
-    position: relative;
-    width: 300px;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
-    animation: formFadeIn 2s ease-in-out;
-}
-
-form p {
     margin: 0;
     padding: 0;
-    color: #fff;
+    background: url('signup.png') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+  }
+  
+  #sign {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    /* Replace this line */
+    /* border: 1px solid #ccc; */
+    /* With these separate properties */
+    border-width: 1px;
+    border-style: solid;
+    border-color: #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    animation: borderChange 3s infinite;
 }
 
-form input[type="text"], form input[type="number"], form input[type="submit"] {
+#sign p {
+    color: red;
+    font-size: 12px;
+}
+
+#sign input[type="text"],
+#sign input[type="number"],
+#sign input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+#sign input[type="text"]:focus,
+#sign input[type="number"]:focus,
+#sign input[type="password"]:focus {
+    border-color: #4CAF50;
+}
+
+#sign input[type="submit"] {
     width: 100%;
     padding: 10px;
-    margin: 10px 0;
+    background-color: #4CAF50;
+    color: white;
     border: none;
     border-radius: 5px;
-    outline: none;
-}
-
-form input[type="text"], form input[type="number"] {
-    background: rgba(255, 255, 255, 0.2);
-    color: #fff;
-}
-
-form input[type="submit"] {
-    background: rgba(0, 212, 255, 0.8);
-    color: #fff;
     cursor: pointer;
-    transition: background 0.3s ease-in-out;
+    font-size: 16px;
+    transition: background-color 0.3s;
 }
 
-form input[type="submit"]:hover {
-    background: rgba(0, 212, 255, 1);
+#sign input[type="submit"]:hover {
+    background-color: #45a049;
 }
 
-form input[type="text"]:focus, form input[type="number"]:focus {
-    background: rgba(255, 255, 255, 0.4);
-    animation: inputGlow 1.5s infinite alternate;
-}
-
-@keyframes formFadeIn {
-    0% { opacity: 0; transform: scale(0.8); }
-    100% { opacity: 1; transform: scale(1); }
-}
-
-@keyframes inputGlow {
-    0% { box-shadow: 0 0 5px rgba(0, 212, 255, 0.5); }
-    100% { box-shadow: 0 0 20px rgba(0, 212, 255, 1); }
+/* Add border color-changing animation */
+@keyframes borderChange {
+    0% {
+        border-color: #ccc;
+    }
+    25% {
+        border-color: #4CAF50;
+    }
+    50% {
+        border-color: #3e8e41;
+    }
+    75% {
+        border-color: #2e7031;
+    }
+    100% {
+        border-color: #ccc;
+    }
 }

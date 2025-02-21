@@ -1,0 +1,116 @@
+
+/* NAVBAR CSS SAME FOR ALL FILE*/
+/* Desktop Navbar */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+
+
+.navbar .logo img {
+   max-height: 50px;
+}
+
+
+
+.navbar .menu ul {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    list-style: none;
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar .menu ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+.navbar .icons {
+    display: flex;
+    gap: 20px;
+    font-size: 20px;
+}
+
+#click{
+    display: none;
+}
+
+.menu-icon {
+    display: none;
+}
+
+/* Mobile Navbar */
+@media only screen and  (max-width: 768px) {
+    html, body {
+        overflow-x: hidden;
+      }
+    body{
+        overflow-x: hidden;
+    }
+    
+    .navbar {
+        justify-content: space-between;
+        position: relative;
+    }
+
+    .menu {
+        display: none;
+        width: 100%;
+        background-color: white;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        
+        
+        text-align: center;
+    }
+
+    .menu ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    
+    #click:checked~.navbar .menu{
+        display: block;
+    }
+
+    .menu-icon {
+        display: block;
+        cursor: pointer;
+        font-size: 30px;
+    }
+
+    .icons {
+        display: none;
+    }
+}
+
+
+/*tablet navbar*/
+@media (min-width: 426px) and (max-width: 768px) {
+    .navbar {
+        padding: 8px 15px; 
+    }
+
+    .navbar .logo img {
+        max-height: 40px; 
+    }
+
+    .navbar .menu ul {
+        gap: 20px; 
+        font-size: 18px; 
+    }
+
+    .navbar .icons {
+        gap: 40px; 
+        font-size: 40px; 
+    }
+}
