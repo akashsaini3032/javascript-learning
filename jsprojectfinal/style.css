@@ -114,3 +114,52 @@
         font-size: 40px; 
     }
 }
+
+
+/* Rooms*/
+/* Rooms section css*/ 
+.rooms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.room-first {
+    background-color: white;
+    border: 1px solid rgba(224, 224, 224, 1);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    width: 220px;
+    margin: 10px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.room-first:hover {
+    transform: scale(1.05);
+}
+
+.room-first img {
+    border-bottom: 1px solid rgba(224, 224, 224, 1);
+    margin-bottom: 15px;
+}
+
+.room-first h3 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.price {
+    font-size: 16px;
+    color: red;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: rgba(136, 136, 136, 1);
+    margin-left: 10px;
+}
+
+  
