@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Currency Calculator</title>
+    <link rel="stylesheet" href="currency.css">
+</head>
+<body>
+    <div class="container">
+        <div class="calculator">
+            <h1>Currency Calculator</h1>
+            <input type="number" id="amount" placeholder="Amount" />
+            <select id="currencyFrom">
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="GBP">GBP</option>
+                <option value="INR">INR</option>
+            </select>
+            <select id="currencyTo">
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="GBP">GBP</option>
+                <option value="INR">INR</option>
+            </select>
+            <button id="convertBtn">Convert</button>
+            <div class="result" id="result"></div>
+        </div>
+    </div>
+    <script src="currency.js"></script>
+</body>
+</html>
