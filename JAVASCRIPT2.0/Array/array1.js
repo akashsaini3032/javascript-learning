@@ -10,6 +10,11 @@
 // }
 
 
+let input=prompt("Enter array elements with space")
+input.split(" ");
+console.log(input);
+
+
 let num=prompt("enter number ")
 
 let ar=[num]

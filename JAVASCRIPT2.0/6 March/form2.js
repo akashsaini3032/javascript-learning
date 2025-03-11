@@ -34,7 +34,7 @@ function validate(){
         return false
     }
 
-    else if(number>=100 && number<1){
+    else if(number<=100 && number>1){
         let errorage=document.querySelector('#errage')
         errorage.innerHTML="Please Enter Your age between 1to 1oo"
         document.querySelector('#number').focus()
