@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rental Service</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Car Rental Service</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#cars">Cars</a></li>
+                <li><a href="#calculator">Fuel Calculator</a></li>
+                <li><a href="#owner">Find Owner</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="cars">
+        <div class="slider">
+            <div class="slides">
+                <div class="slide"><img src="car1.jpg" alt="Car 1"></div>
+                <div class="slide"><img src="car2.jpg" alt="Car 2"></div>
+                <div class="slide"><img src="car3.jpg" alt="Car 3"></div>
+            </div>
+            <button class="prev">❮</button>
+            <button class="next">❯</button>
+        </div>
+    </section>
+
+    <section id="map">
+        <h2>Our Location</h2>
+        <div id="google-map"></div>
+    </section>
+
+    <section id="calculator">
+        <h2>Fuel Cost Calculator</h2>
+        <div class="calculator">
+            <input type="number" id="distance" placeholder="Distance (km)">
+            <input type="number" id="mileage" placeholder="Mileage (km/L)">
+            <input type="number" id="fuelPrice" placeholder="Fuel Price ($/L)">
+            <button onclick="calculateFuel()">Calculate</button>
+            <p id="result"></p>
+        </div>
+    </section>
+
+    <section id="owner">
+        <h2>Find Vehicle Owner</h2>
+        <div class="owner-finder">
+            <input type="text" id="vehicleNumber" placeholder="Enter Vehicle Number">
+            <button onclick="findOwner()">Search</button>
+            <p id="ownerResult"></p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Car Rental Service</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+</body>
+</html>
