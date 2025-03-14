@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Clone</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+            background-color: #e5ddd5;
+        }
+        #app {
+            display: flex;
+            width: 100%;
+        }
+        .sidebar {
+            width: 30%;
+            background-color: #f8f9fa;
+            border-right: 1px solid #ddd;
+            display: flex;
+            flex-direction: column;
+        }
+        .profile {
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+        }
+        .profile img {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        .search {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .search input {
+            width: 100%;
+            padding: 8px;
+            border-radius: 20px;
+            border: 1px solid #ddd;
+        }
+        .contacts {
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+        .contact {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            cursor: pointer;
+        }
+        .contact img {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        .contact-info h3 {
+            margin: 0;
+            font-size: 16px;
+        }
+        .contact-info p {
+            margin: 0;
+            color: #888;
+            font-size: 14px;
+        }
+        .chat {
+            width: 70%;
+            display: flex;
+            flex-direction: column;
+        }
+        .chat-header {
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            background-color: #f0f0f0;
+            border-bottom: 1px solid #ddd;
+        }
+        .chat-header img {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+        .chat-messages {
+            flex-grow: 1;
+            padding: 10px;
+            overflow-y: auto;
+            background-color: #e5ddd5;
+        }
+        .message {
+            margin-bottom: 10px;
+            max-width: 60%;
+            padding: 10px;
+            border-radius: 10px;
+            position: relative;
+        }
+        .message.received {
+            background-color: #fff;
+            align-self: flex-start;
+        }
+        .message.sent {
+            background-color: #dcf8c6;
+            align-self: flex-end;
+        }
+        .time {
+            font-size: 12px;
+            color: #888;
+            position: absolute;
+            bottom: -15px;
+            right: 10px;
+        }
+        .chat-input {
+            display: flex;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-top: 1px solid #ddd;
+        }
+        .chat-input input {
+            flex-grow: 1;
+            padding: 8px;
+            border-radius: 20px;
+            border: 1px solid #ddd;
+            margin-right: 10px;
+        }
+        .chat-input button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 20px;
+            background-color: #25d366;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="sidebar">
+            <div class="profile">
+                <img src="profile-pic.jpg" alt="Profile Picture">
+                <h2>Username</h2>
+            </div>
+            <div class="search">
+                <input type="text" placeholder="Search or start new chat">
+            </div>
+            <div class="contacts">
+                <div class="contact">
+                    <img src="contact-pic.jpg" alt="Contact Picture">
+                    <div class="contact-info">
+                        <h3>Contact Name</h3>
+                        <p>Last message...</p>
+                    </div>
+                </div>
+                <!-- Repeat contact div for more contacts -->
+            </div>
+        </div>
+        <div class="chat">
+            <div class="chat-header">
+                <img src="contact-pic.jpg" alt="Contact Picture">
+                <h3>Contact Name</h3>
+            </div>
+            <div class="chat-messages">
+                <div class="message received">
+                    <p>Hello!</p>
+                    <span class="time">10:00 AM</span>
+                </div>
+                <div class="message sent">
+                    <p>Hi there!</p>
+                    <span class="time">10:01 AM</span>
+                </div>
+                <!-- Repeat message div for more messages -->
+            </div>
+            <div class="chat-input">
+                <input type="text" placeholder="Type a message">
+                <button>Send</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
