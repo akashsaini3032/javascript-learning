@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puzzle Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .puzzle-container {
+            display: grid;
+            grid-template-columns: repeat(4, 100px);
+            grid-template-rows: repeat(4, 100px);
+            gap: 5px;
+        }
+        .puzzle-piece {
+            width: 100px;
+            height: 100px;
+            background-color: #3498db;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            cursor: pointer;
+            user-select: none;
+        }
+        .empty {
+            background-color: transparent;
+            cursor: default;
+        }
+    </style>
+</head>
+<body>
+    <div class="puzzle-container" id="puzzle-container">
+        <!-- Puzzle pieces will be generated here by JavaScript -->
+    </div>
+    <script>
+        const puzzleContainer = document.getElementById('puzzle-container');
+        const size = 4;
+        let pieces = [];
+
+        function createPuzzle() {
+            pieces = [];
+            for (let i = 1; i < size * size; i++) {
+                pieces.push(i);
+            }
+            pieces.push(null); // Empty space
+            shuffle(pieces);
+            renderPuzzle();
+        }
+
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        function renderPuzzle() {
+            puzzleContainer.innerHTML = '';
+            pieces.forEach((piece, index) => {
+                const pieceElement = document.createElement('div');
+                pieceElement.classList.add('puzzle-piece');
+                if (piece === null) {
+                    pieceElement.classList.add('empty');
+                } else {
+                    pieceElement.textContent = piece;
+                    pieceElement.addEventListener('click', () => movePiece(index));
+                }
+                puzzleContainer.appendChild(pieceElement);
+            });
+        }
+
+        function movePiece(index) {
+            const emptyIndex = pieces.indexOf(null);
+            const validMoves = [emptyIndex - 1, emptyIndex + 1, emptyIndex - size, emptyIndex + size];
+            if (validMoves.includes(index)) {
+                [pieces[emptyIndex], pieces[index]] = [pieces[index], pieces[emptyIndex]];
+                renderPuzzle();
+            }
+        }
+
+        createPuzzle();
+    </script>
+</body>
+</html>
