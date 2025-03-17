@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Mario Clone</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: #87CEEB;
+        }
+        #gameCanvas {
+            display: block;
+            background: #87CEEB;
+        }
+        .ground {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 50px;
+            background: #654321;
+        }
+        .mario {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: red;
+            bottom: 50px;
+        }
+        .obstacle {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: green;
+            bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas"></canvas>
+    <div class="ground"></div>
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let mario = {
+            x: 50,
+            y: canvas.height - 100,
+            width: 50,
+            height: 50,
+            dx: 5,
+            dy: 0,
+            gravity: 0.5,
+            jumpPower: -10,
+            isJumping: false
+        };
+
+        let obstacles = [];
+        const obstacleCount = 5;
+        const obstacleWidth = 50;
+        const obstacleHeight = 50;
+
+        function createObstacles() {
+            for (let i = 0; i < obstacleCount; i++) {
+                let obstacle = {
+                    x: Math.random() * (canvas.width - obstacleWidth),
+                    y: canvas.height - 100,
+                    width: obstacleWidth,
+                    height: obstacleHeight
+                };
+                obstacles.push(obstacle);
+            }
+        }
+
+        function drawMario() {
+            ctx.fillStyle = 'red';
+            ctx.fillRect(mario.x, mario.y, mario.width, mario.height);
+        }
+
+        function drawObstacles() {
+            ctx.fillStyle = 'green';
+            obstacles.forEach(obstacle => {
+                ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
+            });
+        }
+
+        function checkCollision() {
+            for (let obstacle of obstacles) {
+                if (mario.x < obstacle.x + obstacle.width &&
+                    mario.x + mario.width > obstacle.x &&
+                    mario.y < obstacle.y + obstacle.height &&
+                    mario.y + mario.height > obstacle.y) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function resetGame() {
+            mario.x = 50;
+            mario.y = canvas.height - 100;
+            mario.dy = 0;
+            obstacles = [];
+            createObstacles();
+        }
+
+        function update() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawMario();
+            drawObstacles();
+
+            mario.y += mario.dy;
+            mario.dy += mario.gravity;
+
+            if (mario.y + mario.height > canvas.height - 50) {
+                mario.y = canvas.height - 100;
+                mario.dy = 0;
+                mario.isJumping = false;
+            }
+
+            if (checkCollision()) {
+                resetGame();
+            }
+
+            requestAnimationFrame(update);
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.code === 'ArrowRight') {
+                mario.x += mario.dx;
+            } else if (event.code === 'ArrowLeft') {
+                mario.x -= mario.dx;
+            } else if (event.code === 'Space' && !mario.isJumping) {
+                mario.dy = mario.jumpPower;
+                mario.isJumping = true;
+            }
+        });
+
+        createObstacles();
+        update();
+    </script>
+</body>
+</html>
