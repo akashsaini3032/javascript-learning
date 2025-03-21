@@ -60,6 +60,7 @@ function validate(){
         document.querySelector('#pass').focus()
         return false
     }
+    
 
     else if(contact==""){
         let errorcontact=document.querySelector('#errcontact')
@@ -81,3 +82,5 @@ function validate(){
 
 
 }
+
+
