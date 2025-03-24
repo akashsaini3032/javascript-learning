@@ -74,3 +74,19 @@ console.log(k[0]); //index isme denge kaun se index ka key chahiye humko
 let n= Object.values(person)
 //console.log(k); // isme array ke form me milega arguemnt me iske object ka naam hoga return karke array dega values
 console.log(k[0]); //index isme denge kaun se index ka value chahiye humko
+
+
+// day2
+// let ob5={
+//     name:"ak",age:20,contact:46456
+// }
+
+// console.log([1])
+
+//destructuring of object
+
+let {name,age,contact}={
+    name:"ak",age:20,contact:46456
+}
+
+console.log(name)
