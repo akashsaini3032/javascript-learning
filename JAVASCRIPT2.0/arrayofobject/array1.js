@@ -2,16 +2,19 @@ let arr=[
     {
         name:"akash",
         attendence:"kabhi kabhi",
-        productivity:"nahi"
+        productivity:"nahi",
+        age:20
 
     },{
         name:"saini",
         attendence:"kabhi kabhi",
-        productivity:"nahi"
+        productivity:"nahi",
+        age:25
     },{
         name:"abhay",
         attendence:"kabhi kabhi",
-        productivity:"nahi"
+        productivity:"nahi",
+        age:45
     }
 ]
 
@@ -48,3 +51,13 @@ console.log(arrattendance);
 
 let arrproductivity=arr.map((e)=>{return e.productivity} )
 console.log(arrproductivity);
+
+
+// filter
+// data  ko filter karna condition ke according 
+//new array dega
+
+
+let fl= arr.filter((e)=>{return e.age>23})
+
+console.log(fl);
