@@ -1,29 +1,29 @@
-// let fetchData= async()=>{
-//     let url="http://localhost:3000/carrental"
-//     let res= await fetch(url, {method:"GET"})
+let fetchData= async()=>{
+    let url="http://localhost:3000/carrental"
+    let res= await fetch(url, {method:"GET"})
 
-//     let data= await res.json()
+    let data= await res.json()
 
-//     console.log(data);
+    console.log(data);
 
-//     let Show=document.querySelector("#datashow")
+    let Show=document.querySelector("#datashow")
 
-//     data.map(
-//         (e)=>{
+    data.map(
+        (e)=>{
 
-//             Show.innerHTML+=`
+            Show.innerHTML+=`
     
-//             <tr>
-//                 <td> ${e.name}</td>
-//                 <td> ${e.age}</td>
-//                 <td> ${e.mobile}</td>
-//                 <td> ${e.person}</td>
-//                 <td> ${e.price}</td>
-//             </tr>
+            <tr>
+                <td> ${e.name}</td>
+                <td> ${e.age}</td>
+                <td> ${e.mobile}</td>
+                <td> ${e.person}</td>
+                <td> ${e.price}</td>
+            </tr>
             
-//             `
-//         }
-//     )
-// }
+            `
+        }
+    )
+}
 
-// fetchData()
+fetchData()
