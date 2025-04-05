@@ -1,6 +1,6 @@
 let fetchData= async()=>{
     let url="http://localhost:3000/carrental"
-    let res= await fetch(url, {method:"GET"})
+    let res= await fetch(url, {method:"GET"}) 
 
     let data= await res.json()
 
@@ -19,11 +19,18 @@ let fetchData= async()=>{
                 <td> ${e.mobile}</td>
                 <td> ${e.person}</td>
                 <td> ${e.price}</td>
+                <td onclick="del('${e.id}')"> delete </td>
             </tr>
             
             `
         }
     )
+}
+
+let del=(id)=>{
+    let url=`http://localhost:3000/carrental/${id}`
+    fetch(url, {method:"DELETE"}) 
+
 }
 
 fetchData()
