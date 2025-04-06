@@ -10,15 +10,15 @@
     },
     {
       "name": "abhay",
-      "age": 21,
-      "mobile": 235356568,
-      "person": 5,
-      "price": 2000
+      "age": 22,
+      "mobile": 235356788,
+      "person": 6,
+      "price": 20000
       
     },
     {
         "name": "anurag",
-        "age": 21,
+        "age": 26,
         "mobile": 235356568,
         "person": 5,
         "price": 2000
@@ -26,7 +26,7 @@
       },
       {
         "name": "amaan",
-        "age": 21,
+        "age": 27,
         "mobile": 235356568,
         "person": 5,
         "price": 2000
@@ -34,7 +34,7 @@
       },
       {
         "name": "vinay",
-        "age": 21,
+        "age": 28,
         "mobile": 235356568,
         "person": 5,
         "price": 2000
@@ -42,7 +42,7 @@
       },
       {
         "name": "raaaaa",
-        "age": 21,
+        "age": 29,
         "mobile": 235356568,
         "person": 5,
         "price": 2000
