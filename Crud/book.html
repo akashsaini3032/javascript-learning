@@ -4,9 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+
+    <form action="">
+        Enter Name: <input type="text" id="name"><br><br>
+        Enter Age: <input type="number" id="age"><br><br>
+        Enter AdharNo: <input type="text" id="aadhar"><br><br>
+        Enter CheckIn: <input type="date" id="checkin"><br><br>
+        Enter CheckOut: <input type="date" id="checkout"><br><br>
+        Enter Mobile: <input type="number" id="mobile"><br><br>
+
+        Choose Country: <select  id="country">
+
+            <option value="India">India</option>
+            <option value="USA">USA</option>
+            <option value="China">China</option>
+            <option value="Nepal">Nepal</option>
+            <option value="Italy">Italy</option>
+
+        </select>
+
+        Enter Person: <input type="text" id="person"><br><br>
+
+        <input type="submit" value="Book Now" onClick="return book()">
+
+
+    </form>
     
     <script src="script.js"></script>
 </body>

@@ -1,52 +1,40 @@
 {
   "carrental": [
     {
-      "name": "akash",
+      "name": "Akash Saini",
+      "age": "21",
+      "aadhar": "235356568",
+      "checkin": "2025-04-07",
+      "checkout": "2025-04-26",
+      "mobile": "1234567898",
+      "person": "1",
+      "country": "India",
+      "price": 2000,
+      "id": "abf1"
+    },
+    {
+      "name": "akaa",
       "age": 21,
-      "mobile": 235356568,
-      "person": 5,
-      "price": 2000
-      
+      "aadhar": 235356568,
+      "checkin": "02/04/2025",
+      "checkout": "02/04/2025",
+      "mobile": 1234567898,
+      "person": 1,
+      "country": "india",
+      "price": 2000,
+      "id": "c708"
     },
     {
-      "name": "abhay",
-      "age": 22,
-      "mobile": 235356788,
-      "person": 6,
-      "price": 20000
-      
-    },
-    {
-        "name": "anurag",
-        "age": 26,
-        "mobile": 235356568,
-        "person": 5,
-        "price": 2000
-        
-      },
-      {
-        "name": "amaan",
-        "age": 27,
-        "mobile": 235356568,
-        "person": 5,
-        "price": 2000
-       
-      },
-      {
-        "name": "vinay",
-        "age": 28,
-        "mobile": 235356568,
-        "person": 5,
-        "price": 2000
-       
-      },
-      {
-        "name": "raaaaa",
-        "age": 29,
-        "mobile": 235356568,
-        "person": 5,
-        "price": 2000
-       
-      }
+      "name": "Raj",
+      "age": "21",
+      "aadhar": "23434645778",
+      "checkin": "2025-04-11",
+      "checkout": "2025-04-26",
+      "mobile": "34654576869",
+      "person": "2",
+      "country": "India",
+      "price": 2000,
+      "id": "4aa9"
+    }
   ]
 }
