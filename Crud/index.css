@@ -1,0 +1,104 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+thead {
+    background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+th {
+    padding: 16px 20px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 600;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+tbody tr {
+    transition: background-color 0.3s ease;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+tbody tr:hover {
+    background-color: #e6f0fa;
+}
+
+td {
+    padding: 14px 20px;
+    font-size: 14px;
+    color: #2d3748;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+td:last-child,
+td:nth-last-child(2) {
+    text-align: center;
+}
+
+td a,
+td button {
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+td:last-child a,
+td:last-child button {
+    background-color: #e53e3e;
+    color: #ffffff;
+    border: none;
+}
+
+td:last-child a:hover,
+td:last-child button:hover {
+    background-color: #c53030;
+}
+
+td:nth-last-child(2) a,
+td:nth-last-child(2) button {
+    background-color: #38a169;
+    color: #ffffff;
+    border: none;
+}
+
+td:nth-last-child(2) a:hover,
+td:nth-last-child(2) button:hover {
+    background-color: #2f855a;
+}
+
+@media (max-width: 768px) {
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    th,
+    td {
+        min-width: 120px;
+        padding: 12px 15px;
+        font-size: 13px;
+    }
+}
+
+:focus {
+    outline: 2px solid #3498db;
+    outline-offset: 2px;
+}
