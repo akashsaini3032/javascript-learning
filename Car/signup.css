@@ -1,0 +1,77 @@
+/* Reset default margins and ensure full page coverage */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('car2.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+}
+
+/* Style for the form */
+#sign {
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
+    backdrop-filter: blur(10px); /* Blur effect for transparency */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    width: 300px; /* Small form width */
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle border */
+}
+
+/* Input fields */
+#sign input[type="text"],
+#sign input[type="number"],
+#sign input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* Placeholder text */
+#sign input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Submit button */
+#button {
+    background: #007BFF;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-weight: bold;
+}
+
+#button:hover {
+    background: #0056b3;
+}
+
+/* Labels and text */
+#sign label,
+#sign p {
+    color: #fff;
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+/* Error messages */
+#errname, #errnum, #erremail, #errpass, #errcpass {
+    color: #ff4d4d;
+    font-size: 12px;
+    min-height: 20px; /* Reserve space for error messages */
+}
+
+/* Remove default border attribute from HTML */
+#sign[border] {
+    border: none;
+}
