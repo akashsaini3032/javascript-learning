@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Age Calculator</title>
+  <style>
+    /* Reset default styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+
+      background: lightblue;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    body:hover{
+
+        background: cyan;
+
+    }
+
+    .container {
+      background: lightsalmon;
+      padding: 40px;
+      border-radius: 80px;
+      box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .container:hover {
+      transform: scale(1.02);
+      background: blueviolet;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    input[type="date"] {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: 2px solid #764ba2;
+      border-radius: 10px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input[type="date"]:hover,
+    input[type="date"]:focus {
+      border-color: #667eea;
+      box-shadow: 0 0 10px rgba(102,126,234,0.4);
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 25px;
+      font-size: 16px;
+      color: white;
+      background: red;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: green;
+    }
+
+    .result {
+      margin-top: 30px;
+      font-size: 20px;
+      color: #333;
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+   <Marquee> <h1>Age Calculator</h1></Marquee>
+    <input type="date" id="dob" />
+    <br />
+    <button onclick="calculateAge()">Calculate Age</button>
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    function calculateAge() {
+      
+      const dobInput = document.getElementById('dob').value;
+
+      
+      if (!dobInput  ) {
+        alert("Please select your Date of Birth");
+        return;
+      }
+
+      
+      
+      const dob = new Date(dobInput);
+      const today = new Date();
+
+       if (dobInput>=Date()) {
+        alert("date is invalid");
+        return;
+      }
+
+     
+
+      
+      let years = today.getFullYear() - dob.getFullYear();
+      let months = today.getMonth() - dob.getMonth();
+      let days = today.getDate() - dob.getDate();
+
+      
+     
+      
+      if (days < 0) {
+       
+        months--;
+        const prevMonth = new Date(today.getFullYear(), today.getMonth(), 0);
+        days += prevMonth.getDate();
+      }
+
+      if (months < 0) {
+        months += 12;
+        years--;
+      }
+
+      
+      const result = document.getElementById('result');
+      result.innerHTML = `You are <strong>${years}</strong> years, <strong>${months}</strong> months, and <strong>${days}</strong> days old.`;
+
+      
+         
+    
+    }
+  </script>
+
+</body>
+</html>
