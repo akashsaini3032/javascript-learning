@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Performance Monitoring System</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      background: linear-gradient(135deg, #e0f7fa, #80deea);
+      color: #333;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #006064;
+      animation: fadeIn 1s ease-in-out;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: #ffffffcc;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+    form input, form button {
+      padding: 10px;
+      margin: 10px 5px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    form button {
+      background-color: #006064;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    form button:hover {
+      background-color: #00838f;
+    }
+    table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+      animation: slideIn 0.5s ease;
+    }
+    th, td {
+      padding: 10px;
+      text-align: center;
+      border-bottom: 1px solid #ccc;
+    }
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+    .actions button {
+      margin: 0 5px;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+    }
+    .edit {
+      background-color: #ffa000;
+    }
+    .delete {
+      background-color: #d32f2f;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(-20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+  </style>
+</head>
+<body>
+  <h1>Student Performance Monitoring</h1>
+  <div class="container">
+    <form id="studentForm">
+      <input type="text" id="name" placeholder="Student Name" required />
+      <input type="number" id="score" placeholder="Score (%)" min="0" max="100" required />
+      <button type="submit">Add Student</button>
+    </form>
+    <table id="studentTable">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Score</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <script>
+    const form = document.getElementById('studentForm');
+    const tableBody = document.querySelector('#studentTable tbody');
+    let students = [
+      { name: 'Aarav Sharma', score: 85 },
+      { name: 'Isha Verma', score: 92 },
+      { name: 'Rohan Patel', score: 67 },
+      { name: 'Sneha Reddy', score: 73 },
+      { name: 'Kunal Joshi', score: 49 },
+      { name: 'Meera Nair', score: 56 },
+      { name: 'Aditya Mehta', score: 88 },
+      { name: 'Priya Desai', score: 77 },
+      { name: 'Varun Malhotra', score: 34 },
+      { name: 'Tanvi Singh', score: 95 }
+    ];
+
+    function renderTable() {
+      tableBody.innerHTML = '';
+      students.forEach((student, index) => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${student.name}</td>
+          <td>${student.score}%</td>
+          <td>${student.score >= 50 ? 'Pass' : 'Fail'}</td>
+          <td class="actions">
+            <button class="edit" onclick="editStudent(${index})">Edit</button>
+            <button class="delete" onclick="deleteStudent(${index})">Delete</button>
+          </td>
+        `;
+        tableBody.appendChild(tr);
+      });
+      localStorage.setItem('students', JSON.stringify(students));
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const score = parseInt(document.getElementById('score').value);
+      if (!name || isNaN(score)) return;
+      students.push({ name, score });
+      form.reset();
+      renderTable();
+    });
+
+    function editStudent(index) {
+      const student = students[index];
+      document.getElementById('name').value = student.name;
+      document.getElementById('score').value = student.score;
+      deleteStudent(index);
+    }
+
+    function deleteStudent(index) {
+      students.splice(index, 1);
+      renderTable();
+    }
+
+    window.onload = () => {
+      const localData = localStorage.getItem('students');
+      if (localData) {
+        students = JSON.parse(localData);
+      }
+      renderTable();
+    };
+  </script>
+</body>
+</html>

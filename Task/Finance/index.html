@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Finance Tracker Table</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+    body {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      padding: 2rem;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 2.5rem;
+      color: #f5f5f5;
+      animation: fadeIn 1s ease-in-out;
+    }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      background: #ffffff;
+      color: #333;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      animation: slideIn 1s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    form {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    input, select, button {
+      padding: 0.7rem;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+    input:focus, select:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 5px rgba(0,123,255,0.5);
+    }
+    button {
+      background: #28a745;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+    button:hover {
+      background: #218838;
+      transform: scale(1.05);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background: #007bff;
+      color: #fff;
+    }
+    tr {
+      transition: background 0.3s;
+    }
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+    .action-btn {
+      color: #007bff;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    .action-btn:hover {
+      color: #0056b3;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📊 Finance Tracker</h1>
+  <div class="container">
+    <form id="finance-form">
+      <input type="hidden" id="entry-id">
+      <input type="text" id="title" placeholder="Title" required />
+      <input type="number" id="amount" placeholder="Amount" required />
+      <select id="type">
+        <option value="income">Income</option>
+        <option value="expense">Expense</option>
+      </select>
+      <input type="text" id="category" placeholder="Category" required />
+      <input type="date" id="date" required />
+      <button type="submit">Save</button>
+    </form>
+
+    <table id="finance-table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Amount</th>
+          <th>Type</th>
+          <th>Category</th>
+          <th>Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="finance-body">
+        <!-- Rows injected by JavaScript -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    const form = document.getElementById('finance-form');
+    const financeBody = document.getElementById('finance-body');
+    const entryIdInput = document.getElementById('entry-id');
+
+    const useAPI = true;
+    const apiURL = 'http://localhost:3000/finance';
+
+    let entries = [];
+
+    function loadEntries() {
+      fetch(apiURL)
+        .then(res => res.json())
+        .then(data => {
+          entries = data;
+          renderTable();
+        });
+    }
+
+    function saveEntry(entry) {
+      if (entry.id) {
+        fetch(`${apiURL}/${entry.id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(entry)
+        }).then(loadEntries);
+      } else {
+        fetch(apiURL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(entry)
+        }).then(loadEntries);
+      }
+    }
+
+    function deleteEntry(id) {
+      fetch(`${apiURL}/${id}`, { method: 'DELETE' })
+        .then(loadEntries);
+    }
+
+    function renderTable() {
+      financeBody.innerHTML = '';
+      entries.forEach(entry => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${entry.title}</td>
+          <td>$${entry.amount.toFixed(2)}</td>
+          <td>${entry.type.charAt(0).toUpperCase() + entry.type.slice(1)}</td>
+          <td>${entry.category}</td>
+          <td>${entry.date}</td>
+          <td>
+            <button class="action-btn" onclick="selectEntry('${entry.id}')">Edit</button>
+            <button class="action-btn" onclick="deleteEntry('${entry.id}')">Delete</button>
+          </td>
+        `;
+        financeBody.appendChild(row);
+      });
+    }
+
+    function selectEntry(id) {
+      const entry = entries.find(e => e.id == id);
+      if (!entry) return;
+      entryIdInput.value = entry.id;
+      document.getElementById('title').value = entry.title;
+      document.getElementById('amount').value = entry.amount;
+      document.getElementById('type').value = entry.type;
+      document.getElementById('category').value = entry.category;
+      document.getElementById('date').value = entry.date;
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const newEntry = {
+        id: entryIdInput.value || undefined,
+        title: document.getElementById('title').value,
+        amount: parseFloat(document.getElementById('amount').value),
+        type: document.getElementById('type').value,
+        category: document.getElementById('category').value,
+        date: document.getElementById('date').value,
+      };
+      saveEntry(newEntry);
+      form.reset();
+    });
+
+    loadEntries();
+  </script>
+</body>
+</html>

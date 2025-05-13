@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRM Monitoring Dashboard</title>
+  <style>
+    :root {
+      --primary: #2c3e50;
+      --secondary: #3498db;
+      --bg: #f4f6f9;
+      --white: #ffffff;
+      --text: #2d3436;
+      --success: #2ecc71;
+      --danger: #e74c3c;
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      background: var(--white);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 30px;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: var(--primary);
+    }
+
+    .form-section {
+      margin-bottom: 30px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    input, textarea, select, button {
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--secondary);
+      box-shadow: 0 0 8px var(--secondary);
+    }
+
+    button {
+      background: var(--primary);
+      color: var(--white);
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+      background: var(--secondary);
+      transform: scale(1.05);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      box-shadow: var(--shadow);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+
+    th {
+      background-color: var(--primary);
+      color: var(--white);
+    }
+
+    tr:hover {
+      background-color: #f0f6ff;
+      transition: background-color 0.2s ease-in;
+    }
+
+    .btn-danger {
+      background: var(--danger);
+    }
+
+    .btn-danger:hover {
+      background: #c0392b;
+    }
+
+    .filter-bar {
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      color: #fff;
+    }
+
+    .lead { background: #f39c12; }
+    .contacted { background: #3498db; }
+    .converted { background: #2ecc71; }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Marketing CRM Dashboard</h1>
+
+    <form id="clientForm" class="form-section">
+      <input type="text" id="name" placeholder="Client Name" required />
+      <input type="email" id="email" placeholder="Email" required />
+      <textarea id="notes" placeholder="Notes"></textarea>
+      <select id="status">
+        <option value="lead">Lead</option>
+        <option value="contacted">Contacted</option>
+        <option value="converted">Converted</option>
+      </select>
+      <button type="submit">Save Client</button>
+    </form>
+
+    <div class="filter-bar">
+      <label for="filter">Filter by Status:</label>
+      <select id="filter" onchange="renderClients()">
+        <option value="all">All</option>
+        <option value="lead">Lead</option>
+        <option value="contacted">Contacted</option>
+        <option value="converted">Converted</option>
+      </select>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Notes</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="clientList"></tbody>
+    </table>
+  </div>
+
+  <script>
+    const API_URL = 'http://localhost:3000/clients';
+    const form = document.getElementById('clientForm');
+    const clientList = document.getElementById('clientList');
+
+    let selectedClientId = null;
+
+    async function fetchClients() {
+      const res = await fetch(API_URL);
+      return await res.json();
+    }
+
+    async function renderClients() {
+      const filter = document.getElementById('filter')?.value || 'all';
+      const clients = await fetchClients();
+      clientList.innerHTML = '';
+      clients
+        .filter(client => filter === 'all' || client.status === filter)
+        .sort((a, b) => a.name.localeCompare(b.name))
+        .forEach(client => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${client.name}</td>
+            <td>${client.email}</td>
+            <td>${client.notes}</td>
+            <td><span class="status-badge ${client.status}">${client.status}</span></td>
+            <td>
+              <button onclick="editClient(${client.id})">Edit</button>
+              <button class="btn-danger" onclick="deleteClient(${client.id})">Delete</button>
+            </td>
+          `;
+          clientList.appendChild(row);
+        });
+    }
+
+    async function editClient(id) {
+      const client = await fetch(`${API_URL}/${id}`).then(res => res.json());
+      document.getElementById('name').value = client.name;
+      document.getElementById('email').value = client.email;
+      document.getElementById('notes').value = client.notes;
+      document.getElementById('status').value = client.status;
+      selectedClientId = id;
+    }
+
+    async function deleteClient(id) {
+      await fetch(`${API_URL}/${id}`, {
+        method: 'DELETE'
+      });
+      renderClients();
+    }
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const clientData = {
+        name: document.getElementById('name').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        notes: document.getElementById('notes').value.trim(),
+        status: document.getElementById('status').value
+      };
+
+      if (!clientData.name || !clientData.email) return;
+
+      if (selectedClientId) {
+        await fetch(`${API_URL}/${selectedClientId}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(clientData)
+        });
+        selectedClientId = null;
+      } else {
+        await fetch(API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(clientData)
+        });
+      }
+
+      form.reset();
+      renderClients();
+    });
+
+    window.onload = renderClients;
+  </script>
+</body>
+</html>

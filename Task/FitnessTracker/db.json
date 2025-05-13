@@ -1,0 +1,28 @@
+{
+  "workouts": [
+    {
+      "id": "1",
+      "exercise": "Running",
+      "duration": "30 min",
+      "calories": 300
+    },
+    {
+      "id": "2",
+      "exercise": "Cycling",
+      "duration": "45 min",
+      "calories": 400
+    },
+    {
+      "id": "edf9",
+      "exercise": "Running",
+      "duration": "15 min",
+      "calories": 21
+    },
+    {
+      "id": "b02d",
+      "exercise": "Swimming",
+      "duration": "30 min",
+      "calories": 40
+    }
+  ]
+}

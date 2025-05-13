@@ -1,0 +1,15 @@
+{
+    "students": [
+      { "id": 1, "name": "Aarav Sharma", "score": 85 },
+      { "id": 2, "name": "Isha Verma", "score": 92 },
+      { "id": 3, "name": "Rohan Patel", "score": 67 },
+      { "id": 4, "name": "Sneha Reddy", "score": 73 },
+      { "id": 5, "name": "Kunal Joshi", "score": 49 },
+      { "id": 6, "name": "Meera Nair", "score": 56 },
+      { "id": 7, "name": "Aditya Mehta", "score": 88 },
+      { "id": 8, "name": "Priya Desai", "score": 77 },
+      { "id": 9, "name": "Varun Malhotra", "score": 34 },
+      { "id": 10, "name": "Tanvi Singh", "score": 95 }
+    ]
+  }
+  

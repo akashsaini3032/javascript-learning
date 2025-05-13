@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fitness Tracker Pro</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: #fff;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      color: #00ffe7;
+      text-shadow: 0 0 10px #00ffe7;
+      margin-bottom: 1rem;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      justify-content: center;
+    }
+
+    input, select {
+      padding: 0.5rem;
+      border-radius: 8px;
+      border: none;
+      min-width: 150px;
+      font-size: 1rem;
+    }
+
+    .toast {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      background: #00ffe7;
+      color: #000;
+      font-weight: bold;
+      box-shadow: 0 0 10px #00ffe7;
+      animation: fadeOut 3s forwards;
+      z-index: 100;
+    }
+
+    @keyframes fadeOut {
+      0% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { opacity: 0; transform: translateY(-20px); }
+    }
+
+    form {
+      background: rgba(255,255,255,0.05);
+      padding: 1rem;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      box-shadow: 0 0 15px rgba(0,255,255,0.1);
+    }
+
+    form button {
+      background: #00ffe7;
+      color: #000;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    form button:hover {
+      background: #00c9b7;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 1rem;
+      margin: 0.5rem 0;
+      border-radius: 10px;
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: 0.3s;
+      box-shadow: 0 0 10px rgba(0,255,255,0.1);
+    }
+
+    .card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 12px rgba(0,255,255,0.4);
+    }
+
+    .actions button {
+      margin-left: 0.5rem;
+      padding: 0.4rem 0.8rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .edit-btn {
+      background: #ffe600;
+      color: #000;
+    }
+
+    .edit-btn:hover {
+      background: #d4be00;
+    }
+
+    .delete-btn {
+      background: #ff4d4d;
+      color: #fff;
+    }
+
+    .delete-btn:hover {
+      background: #cc0000;
+    }
+
+    #summary {
+      margin-top: 1rem;
+      font-weight: bold;
+      text-shadow: 0 0 5px #00ffe7;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🏋️ Fitness Tracker</h1>
+
+  <div class="controls">
+    <input type="text" id="search" placeholder="Search Exercise..." />
+    <select id="sort">
+      <option value="">Sort by Calories</option>
+      <option value="asc">Low to High</option>
+      <option value="desc">High to Low</option>
+    </select>
+  </div>
+
+  <form id="workout-form">
+    <select id="exercise" required>
+      <option value="">-- Select Exercise --</option>
+      <option value="Running">Running</option>
+      <option value="Cycling">Cycling</option>
+      <option value="Yoga">Yoga</option>
+      <option value="Swimming">Swimming</option>
+      <option value="Weight Lifting">Weight Lifting</option>
+      <option value="Walking">Walking</option>
+    </select>
+
+    <select id="duration" required>
+      <option value="">-- Select Duration --</option>
+      <option value="15 min">15 min</option>
+      <option value="30 min">30 min</option>
+      <option value="45 min">45 min</option>
+      <option value="1 hour">1 hour</option>
+    </select>
+
+    <input type="number" id="calories" placeholder="Calories burned (e.g. 250)" required />
+
+    <button type="submit">Add / Update</button>
+  </form>
+
+  <div id="workout-list"></div>
+  <div id="summary"></div>
+
+  <script>
+    const API_URL = 'http://localhost:3000/workouts';
+    const workoutForm = document.getElementById('workout-form');
+    const workoutList = document.getElementById('workout-list');
+    const summary = document.getElementById('summary');
+    const searchInput = document.getElementById('search');
+    const sortSelect = document.getElementById('sort');
+
+    let editingId = null;
+    let allWorkouts = [];
+
+    function showToast(message) {
+      const toast = document.createElement('div');
+      toast.className = 'toast';
+      toast.textContent = message;
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 3000);
+    }
+
+    function renderSummary() {
+      const total = allWorkouts.reduce((sum, w) => sum + Number(w.calories), 0);
+      summary.textContent = `🔥 Total Calories Burned: ${total}`;
+    }
+
+    function renderWorkouts(list) {
+      workoutList.innerHTML = '';
+      list.forEach(workout => {
+        const div = document.createElement('div');
+        div.className = 'card';
+        div.innerHTML = `
+          <div>
+            <strong>${workout.exercise}</strong><br>
+            Duration: ${workout.duration}<br>
+            Calories: ${workout.calories}
+          </div>
+          <div class="actions">
+            <button class="edit-btn" onclick="editWorkout(${workout.id})">Edit</button>
+            <button class="delete-btn" onclick="deleteWorkout(${workout.id})">Delete</button>
+          </div>
+        `;
+        workoutList.appendChild(div);
+      });
+      renderSummary();
+    }
+
+    async function loadWorkouts() {
+      try {
+        const res = await fetch(API_URL);
+        allWorkouts = await res.json();
+        applyFilters();
+      } catch (e) {
+        showToast("Failed to load data!");
+      }
+    }
+
+    function applyFilters() {
+      let filtered = [...allWorkouts];
+      const searchVal = searchInput.value.toLowerCase();
+      const sortVal = sortSelect.value;
+
+      if (searchVal) {
+        filtered = filtered.filter(w => w.exercise.toLowerCase().includes(searchVal));
+      }
+
+      if (sortVal === 'asc') {
+        filtered.sort((a, b) => a.calories - b.calories);
+      } else if (sortVal === 'desc') {
+        filtered.sort((a, b) => b.calories - a.calories);
+      }
+
+      renderWorkouts(filtered);
+    }
+
+    workoutForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const exercise = document.getElementById('exercise').value;
+      const duration = document.getElementById('duration').value;
+      const calories = parseInt(document.getElementById('calories').value);
+
+      const data = { exercise, duration, calories };
+
+      try {
+        if (editingId) {
+          await fetch(`${API_URL}/${editingId}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
+          showToast('Workout updated!');
+          editingId = null;
+        } else {
+          await fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
+          showToast('Workout added!');
+        }
+
+        workoutForm.reset();
+        loadWorkouts();
+      } catch {
+        showToast('Error saving workout');
+      }
+    });
+
+    async function deleteWorkout(id) {
+      await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
+      showToast('Workout deleted!');
+      loadWorkouts();
+    }
+
+    async function editWorkout(id) {
+      const res = await fetch(`${API_URL}/${id}`);
+      const workout = await res.json();
+      document.getElementById('exercise').value = workout.exercise;
+      document.getElementById('duration').value = workout.duration;
+      document.getElementById('calories').value = workout.calories;
+      editingId = id;
+    }
+
+    searchInput.addEventListener('input', applyFilters);
+    sortSelect.addEventListener('change', applyFilters);
+
+    loadWorkouts();
+  </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+    "stocks": [
+      { "id": 1, "name": "Apple", "price": 173.2 },
+      { "id": 2, "name": "Tesla", "price": 207.4 },
+      { "id": 3, "name": "Amazon", "price": 145.1 },
+      { "id": 4, "name": "Google", "price": 2803.5 },
+      { "id": 5, "name": "Microsoft", "price": 318.3 },
+      { "id": 6, "name": "Meta", "price": 234.7 },
+      { "id": 7, "name": "Netflix", "price": 401.9 },
+      { "id": 8, "name": "NVIDIA", "price": 768.4 },
+      { "id": 9, "name": "Intel", "price": 56.8 },
+      { "id": 10, "name": "AMD", "price": 114.3 },
+      { "id": 11, "name": "Oracle", "price": 92.6 },
+      { "id": 12, "name": "Salesforce", "price": 198.4 },
+      { "id": 13, "name": "Adobe", "price": 351.5 },
+      { "id": 14, "name": "PayPal", "price": 67.2 },
+      { "id": 15, "name": "Uber", "price": 48.9 }
+    ]
+  }
+  

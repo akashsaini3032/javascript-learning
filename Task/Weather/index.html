@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App Monitor</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #74ebd5, #ACB6E5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      padding: 2rem;
+      color: #333;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: #2c3e50;
+    }
+
+    .weather-form {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .weather-form input, .weather-form button {
+      padding: 0.8rem 1.2rem;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+
+    .weather-form input {
+      flex: 1;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .weather-form button {
+      background: #3498db;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .weather-form button:hover {
+      background: #2980b9;
+    }
+
+    .weather-card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      width: 300px;
+      animation: fadeIn 0.5s ease-in;
+      position: relative;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .delete-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #e74c3c;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .delete-btn:hover {
+      background: #c0392b;
+    }
+  </style>
+</head>
+<body>
+  <h1>Weather App Monitor</h1>
+  <form class="weather-form" id="weatherForm">
+    <input type="text" id="cityInput" placeholder="Enter city name" required>
+    <button type="submit">Add</button>
+  </form>
+  <div id="weatherList"></div>
+
+  <script>
+    const weatherForm = document.getElementById('weatherForm');
+    const cityInput = document.getElementById('cityInput');
+    const weatherList = document.getElementById('weatherList');
+
+    const API_KEY = '46e9167b9798d5432edc6d184fbef6c9';
+    const dbUrl = 'http://localhost:3000/weather';
+
+    async function fetchWeather(city) {
+      const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
+      if (!response.ok) throw new Error('City not found');
+      return await response.json();
+    }
+
+    async function addWeatherCard(city) {
+      try {
+        const data = await fetchWeather(city);
+        const weatherObj = {
+          city: data.name,
+          temperature: data.main.temp,
+          condition: data.weather[0].main
+        };
+        await fetch(dbUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(weatherObj)
+        });
+        renderWeatherCards();
+      } catch (error) {
+        alert(error.message);
+      }
+    }
+
+    async function renderWeatherCards() {
+      const res = await fetch(dbUrl);
+      const weathers = await res.json();
+      weatherList.innerHTML = '';
+      weathers.forEach(weather => {
+        const card = document.createElement('div');
+        card.className = 'weather-card';
+        card.innerHTML = `
+          <button class="delete-btn" onclick="deleteWeather(${weather.id})">&times;</button>
+          <h2>${weather.city}</h2>
+          <p><strong>Temperature:</strong> ${weather.temperature}°C</p>
+          <p><strong>Condition:</strong> ${weather.condition}</p>
+        `;
+        weatherList.appendChild(card);
+      });
+    }
+
+    async function deleteWeather(id) {
+      await fetch(`${dbUrl}/${id}`, {
+        method: 'DELETE'
+      });
+      renderWeatherCards();
+    }
+
+    weatherForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const city = cityInput.value.trim();
+      if (city) {
+        addWeatherCard(city);
+        cityInput.value = '';
+      }
+    });
+
+    renderWeatherCards();
+  </script>
+</body>
+</html>

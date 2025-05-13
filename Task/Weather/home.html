@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>🌤️ Indian Weather Monitoring</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #e0f7fa, #f9fbe7);
+      margin: 0;
+      padding: 2rem;
+      color: #2c3e50;
+    }
+
+    h1 {
+      text-align: center;
+      color: #00796b;
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+      animation: fadeInDown 0.8s ease-in-out;
+    }
+
+    .form-container {
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      background: #ffffff;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    input, button {
+      padding: 0.7rem;
+      margin: 0.5rem 0;
+      width: 100%;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+    }
+
+    button {
+      background-color: #00796b;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #004d40;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      animation: fadeInUp 1s ease-in-out;
+    }
+
+    th, td {
+      padding: 1rem;
+      text-align: center;
+      border-bottom: 1px solid #eee;
+    }
+
+    th {
+      background-color: #004d40;
+      color: white;
+    }
+
+    tr:hover {
+      background-color: #e0f2f1;
+      transition: background 0.3s;
+    }
+
+    .btn-group button {
+      margin: 0 0.25rem;
+      border: none;
+      padding: 0.4rem 0.8rem;
+      border-radius: 0.4rem;
+    }
+
+    .edit-btn {
+      background-color: #fbc02d;
+      color: #212121;
+    }
+
+    .edit-btn:hover {
+      background-color: #f9a825;
+    }
+
+    .delete-btn {
+      background-color: #e53935;
+      color: white;
+    }
+
+    .delete-btn:hover {
+      background-color: #c62828;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🌤️ Indian Weather Monitoring System</h1>
+
+  <div class="form-container">
+    <form id="weatherForm">
+      <input type="text" id="city" placeholder="City Name" required />
+      <input type="number" id="temperature" placeholder="Temperature (°C)" required />
+      <input type="number" id="humidity" placeholder="Humidity (%)" required />
+      <input type="text" id="description" placeholder="Weather Description" required />
+      <input type="number" id="wind" placeholder="Wind Speed (km/h)" required />
+      <button type="submit">Save Weather</button>
+    </form>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>City</th>
+        <th>Temp (°C)</th>
+        <th>Humidity (%)</th>
+        <th>Description</th>
+        <th>Wind (km/h)</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="weatherTable"></tbody>
+  </table>
+
+  <script>
+    const form = document.getElementById('weatherForm');
+    const tableBody = document.getElementById('weatherTable');
+    const apiURL = "http://localhost:3000/weather";
+    let editId = null;
+
+    const getData = async () => {
+      const res = await fetch(apiURL);
+      const data = await res.json();
+      localStorage.setItem('weatherData', JSON.stringify(data));
+      renderTable(data);
+    };
+
+    const renderTable = (data) => {
+      tableBody.innerHTML = '';
+      data.forEach(item => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${item.city}</td>
+          <td>${item.temperature}</td>
+          <td>${item.humidity}</td>
+          <td>${item.description}</td>
+          <td>${item.wind}</td>
+          <td class="btn-group">
+            <button class="edit-btn" onclick="editWeather(${item.id})">Edit</button>
+            <button class="delete-btn" onclick="deleteWeather(${item.id})">Delete</button>
+          </td>
+        `;
+        tableBody.appendChild(row);
+      });
+    };
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const weather = {
+        city: form.city.value,
+        temperature: form.temperature.value,
+        humidity: form.humidity.value,
+        description: form.description.value,
+        wind: form.wind.value
+      };
+
+      if (editId) {
+        await fetch(`${apiURL}/${editId}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(weather)
+        });
+        editId = null;
+      } else {
+        await fetch(apiURL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(weather)
+        });
+      }
+
+      form.reset();
+      getData();
+    });
+
+    window.editWeather = async (id) => {
+      const res = await fetch(`${apiURL}/${id}`);
+      const data = await res.json();
+      form.city.value = data.city;
+      form.temperature.value = data.temperature;
+      form.humidity.value = data.humidity;
+      form.description.value = data.description;
+      form.wind.value = data.wind;
+      editId = id;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    window.deleteWeather = async (id) => {
+      if (confirm("Delete this weather entry?")) {
+        await fetch(`${apiURL}/${id}`, { method: 'DELETE' });
+        getData();
+      }
+    };
+
+    getData();
+  </script>
+</body>
+</html>
