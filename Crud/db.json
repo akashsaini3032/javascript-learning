@@ -1,40 +1,40 @@
-{
-  "carrental": [
-    {
-      "name": "Akash Saini",
-      "age": "21",
-      "aadhar": "235356568",
-      "checkin": "2025-04-07",
-      "checkout": "2025-04-26",
-      "mobile": "1234567898",
-      "person": "1",
-      "country": "India",
-      "price": 2000,
-      "id": "abf1"
-    },
-    {
-      "name": "akaa",
-      "age": 21,
-      "aadhar": 235356568,
-      "checkin": "02/04/2025",
-      "checkout": "02/04/2025",
-      "mobile": 1234567898,
-      "person": 1,
-      "country": "india",
-      "price": 2000,
-      "id": "c708"
-    },
-    {
-      "name": "Raj",
-      "age": "21",
-      "aadhar": "23434645778",
-      "checkin": "2025-04-11",
-      "checkout": "2025-04-26",
-      "mobile": "34654576869",
-      "person": "2",
-      "country": "India",
-      "price": 2000,
-      "id": "4aa9"
-    }
-  ]
-}
+// {
+//   "carrental": [
+//     {
+//       "name": "Akash Saini",
+//       "age": "21",
+//       "aadhar": "235356568",
+//       "checkin": "2025-04-07",
+//       "checkout": "2025-04-26",
+//       "mobile": "1234567898",
+//       "person": "1",
+//       "country": "India",
+//       "price": 2000,
+//       "id": "abf1"
+//     },
+//     {
+//       "name": "akaa",
+//       "age": 21,
+//       "aadhar": 235356568,
+//       "checkin": "02/04/2025",
+//       "checkout": "02/04/2025",
+//       "mobile": 1234567898,
+//       "person": 1,
+//       "country": "india",
+//       "price": 2000,
+//       "id": "c708"
+//     },
+//     {
+//       "name": "Raj",
+//       "age": "21",
+//       "aadhar": "23434645778",
+//       "checkin": "2025-04-11",
+//       "checkout": "2025-04-26",
+//       "mobile": "34654576869",
+//       "person": "2",
+//       "country": "India",
+//       "price": 2000,
+//       "id": "4aa9"
+//     }
+//   ]
+// }
