@@ -1,19 +1,19 @@
-let greeting=[
-    {
-        name:"akash",
-        age:25,
-        greet:""
-    },
-]
+// let greeting=[
+//     {
+//         name:"akash",
+//         age:25,
+//         greet:""
+//     },
+// ]
 
-let display=document.querySelector("#dataDisplay")
-greeting.map((e)=>{
-    display.innerHTML+=`
+// let display=document.querySelector("#dataDisplay")
+// greeting.map((e)=>{
+//     display.innerHTML+=`
 
-    console.log("hello,my name is ${e.name} and iam ${e.age} years old
-    )
+//     console.log("hello,my name is ${e.name} and iam ${e.age} years old
+//     )
 
     
-    `
+//     `
    
-})
+// })
