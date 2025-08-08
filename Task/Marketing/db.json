@@ -1,46 +1,46 @@
-// {
-//   "clients": [
-//     {
-//       "name": "Amit Sharma",
-//       "email": "amit.sharma@example.in",
-//       "notes": "Interested in social media package.",
-//       "status": "lead",
-//       "id": "097b"
-//     },
-//     {
-//       "name": "Priya Desai",
-//       "email": "priya.desai@example.in",
-//       "notes": "Follow-up scheduled for next week.",
-//       "status": "contacted",
-//       "id": "385b"
-//     },
-//     {
-//       "name": "Rahul Verma",
-//       "email": "rahul.verma@example.in",
-//       "notes": "Looking for long-term SEO.",
-//       "status": "converted",
-//       "id": "9df0"
-//     },
-//     {
-//       "name": "Sneha Kapoor",
-//       "email": "sneha.kapoor@example.in",
-//       "notes": "Requested a call back on Thursday.",
-//       "status": "lead",
-//       "id": "e97a"
-//     },
-//     {
-//       "name": "Karthik Reddy",
-//       "email": "karthik.reddy@example.in",
-//       "notes": "Needs Google Ads campaign setup.",
-//       "status": "contacted",
-//       "id": "cf1a"
-//     },
-//     {
-//       "id": "464d",
-//       "name": "Akash Saini",
-//       "email": "aksaini000369@gmail.com",
-//       "notes": "web developer",
-//       "status": "contacted"
-//     }
-//   ]
-// }
+{
+  "clients": [
+    {
+      "name": "Amit Sharma",
+      "email": "amit.sharma@example.in",
+      "notes": "Interested in social media package.",
+      "status": "lead",
+      "id": "097b"
+    },
+    {
+      "name": "Priya Desai",
+      "email": "priya.desai@example.in",
+      "notes": "Follow-up scheduled for next week.",
+      "status": "contacted",
+      "id": "385b"
+    },
+    {
+      "name": "Rahul Verma",
+      "email": "rahul.verma@example.in",
+      "notes": "Looking for long-term SEO.",
+      "status": "converted",
+      "id": "9df0"
+    },
+    {
+      "name": "Sneha Kapoor",
+      "email": "sneha.kapoor@example.in",
+      "notes": "Requested a call back on Thursday.",
+      "status": "lead",
+      "id": "e97a"
+    },
+    {
+      "name": "Karthik Reddy",
+      "email": "karthik.reddy@example.in",
+      "notes": "Needs Google Ads campaign setup.",
+      "status": "contacted",
+      "id": "cf1a"
+    },
+    {
+      "id": "464d",
+      "name": "Akash Saini",
+      "email": "aksaini000369@gmail.com",
+      "notes": "web developer",
+      "status": "contacted"
+    }
+  ]
+}
