@@ -1,0 +1,26 @@
+<html>
+    <body bgcolor="blue">
+        <h1>Akash</h1>
+        <script>
+            let promise=new Promise(function (resolve, reject) {
+                let goodDeveloper=false;
+
+                if(goodDeveloper) {
+                    setTimeout(()=>{
+                        resolve("sucessful")
+                    });
+                }
+
+                else{
+                    reject("unsuccessful");
+                }
+            });
+
+            promise.then((data)=>{
+                alert(data);
+            }).catch((err)=>{
+                console.log(err);
+            })
+        </script>
+    </body>
+</html>
