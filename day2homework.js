@@ -1,40 +1,40 @@
-function okk(){
-    console.log("okk");
-}
+// function okk(){
+//     console.log("okk");
+// }
 
 
 
-function ak(){
+// function ak(){
 
-    console.log("ak");
-}
-
-
-
-function jk(){
-
-    console.log("jk");
-}
+//     console.log("ak");
+// }
 
 
 
+// function jk(){
 
-function mj(){
-
-    console.log("mj");
-}
-
-
-
-function an(){
-
-    console.log("an");
-}
+//     console.log("jk");
+// }
 
 
 
-okk();
-ak();
-jk();
-mj();
-an();
+
+// function mj(){
+
+//     console.log("mj");
+// }
+
+
+
+// function an(){
+
+//     console.log("an");
+// }
+
+
+
+// okk();
+// ak();
+// jk();
+// mj();
+// an();
