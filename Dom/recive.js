@@ -66,37 +66,37 @@
 
      
 
-function image1(){
-    let show=document.querySelector("#insertimage")
-    show.style.backgroundImage="url(google image.png)"
-}
+// function image1(){
+//     let show=document.querySelector("#insertimage")
+//     show.style.backgroundImage="url(google image.png)"
+// }
 
-  function okk(){
-    let show=document.querySelector("#ok")
-    show.src="download.jpg"
-  }  
+//   function okk(){
+//     let show=document.querySelector("#ok")
+//     show.src="download.jpg"
+//   }  
 
-function color(){
-  let show1=document.querySelector(".d1")
-  show1.style.backgroundColor="green"
-    let show2=document.querySelector(".d2")
-  show2.style.backgroundColor="red"
-    let show3=document.querySelector(".d3")
-  show3.style.backgroundColor="black"
-}
+// function color(){
+//   let show1=document.querySelector(".d1")
+//   show1.style.backgroundColor="green"
+//     let show2=document.querySelector(".d2")
+//   show2.style.backgroundColor="red"
+//     let show3=document.querySelector(".d3")
+//   show3.style.backgroundColor="black"
+// }
 
-let show
-function color(){
-   show=document.querySelector(".jadoo")
-  if(show.style.display=="block"){
-    show.style.display="none"
-  }
+// let show
+// function color(){
+//    show=document.querySelector(".jadoo")
+//   if(show.style.display=="block"){
+//     show.style.display="none"
+//   }
 
- else {
-     show.style.display="block"
- }
+//  else {
+//      show.style.display="block"
+//  }
 
-}
+// }
 
 
 
