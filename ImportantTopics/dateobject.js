@@ -2,18 +2,18 @@ let time= new Date() // bina new ke date likhenge to answer milega but string fo
 //  new laga denge to object form me
 console.log(time);
 
-// console.log(time.getFullYear());
+console.log(time.getFullYear());
 
-// console.log(time.getMonth());
-// console.log(time.getDay());
-// console.log(time.getHours());
-// console.log(time.getMinutes());
-// console.log(time.getSeconds());
-// console.log(time.getMilliseconds());
+console.log(time.getMonth());
+console.log(time.getDay());
+console.log(time.getHours());
+console.log(time.getMinutes());
+console.log(time.getSeconds());
+console.log(time.getMilliseconds());
 
-// let arr=["sun","mon","tue","wed","thus","fri","satur",]
-// //console.log(arr[1]);
-// console.log(arr[time.getDay()]);
+let arr=["sun","mon","tue","wed","thus","fri","satur",]
+//console.log(arr[1]);
+console.log(arr[time.getDay()]);
 
 
 
