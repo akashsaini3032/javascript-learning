@@ -100,24 +100,24 @@ let signup=()=>{
     return false
 }
 
-// let login=()=>{
-//     let loginname=document.querySelector("#loginname").value
-//     let loginpass=document.querySelector("#loginpass").value
+let login=()=>{
+    let loginname=document.querySelector("#loginname").value
+    let loginpass=document.querySelector("#loginpass").value
 
-//     let localname=localStorage.getItem("Name")
-//     let localpass=localStorage.getItem("Password")
+    let localname=localStorage.getItem("Name")
+    let localpass=localStorage.getItem("Password")
 
-//     if(loginname==localname && loginpass==localpass){
-//         location.href="localhome.html"
-//     }
+    if(loginname==localname && loginpass==localpass){
+        location.href="localhome.html"
+    }
 
-//     else{
-//         alert("invalid username and password")
-//     }
+    else{
+        alert("invalid username and password")
+    }
 
-//     return false
-// }
+    return false
+}
 
-// let logout=()=>{
-//     localStorage.clear()
-// }
+let logout=()=>{
+    localStorage.clear()
+}
