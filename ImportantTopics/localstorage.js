@@ -9,13 +9,13 @@ let login=()=>{
 }
 
 
-// let display=document.querySelector("#show")
+let display=document.querySelector("#show")
 
-// display.innerHTML=localStorage.getItem("name")
+display.innerHTML=localStorage.getItem("name")
 
-// let display2=document.querySelector("#show2")
+let display2=document.querySelector("#show2")
 
-// display2.innerHTML=localStorage.getItem("age")
+display2.innerHTML=localStorage.getItem("age")
 
 
 let logout=()=>{
