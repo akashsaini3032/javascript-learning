@@ -1,8 +1,8 @@
-let showtime=document.querySelector("#show")
+// let showtime=document.querySelector("#show")
 
-setInterval(() => {
-  let time=new Date()
+// setInterval(() => {
+//   let time=new Date()
         
-showtime.innerHTML=` ${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}`
+// showtime.innerHTML=` ${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}`
         
-    }, 1000);
+//     }, 1000);
