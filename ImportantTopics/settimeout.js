@@ -15,16 +15,16 @@ let fun=()=>{
 
 
 
-// let count=0
-// let inter;
-//  inter= setInterval(()=>{
-//     console.log(count);
-//     count++;
-// },3000)
+let count=0
+let inter;
+ inter= setInterval(()=>{
+    console.log(count);
+    count++;
+},3000)
 
-// let st=()=>{
-//     clearInterval(inter)
-// }
+let st=()=>{
+    clearInterval(inter)
+}
 
 
 let stop = () => {
