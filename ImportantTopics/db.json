@@ -1,52 +1,52 @@
-{
-    "hotel":[
-        {
-            "name":"Akash Saini",
-            "age":25,
-            "city":"mumbai",
-            "Adharno":12634556,
-            "number":32435457,
-            "person":5,
-            "price":2000
+// {
+//     "hotel":[
+//         {
+//             "name":"Akash Saini",
+//             "age":25,
+//             "city":"mumbai",
+//             "Adharno":12634556,
+//             "number":32435457,
+//             "person":5,
+//             "price":2000
 
 
             
-        },
-        {
-            "name":"abhay",
-            "age":25,
-            "city":"mumbai",
-            "Adharno":12334756,
-            "number":32435457,
-            "person":5,
-            "price":2000
+//         },
+//         {
+//             "name":"abhay",
+//             "age":25,
+//             "city":"mumbai",
+//             "Adharno":12334756,
+//             "number":32435457,
+//             "person":5,
+//             "price":2000
 
 
             
-        },
-        {
-            "name":"vinay",
-            "age":25,
-            "city":"mumbai",
-            "adharno":12337556,
-            "number":32435457,
-            "person":5,
-            "price":2000
+//         },
+//         {
+//             "name":"vinay",
+//             "age":25,
+//             "city":"mumbai",
+//             "adharno":12337556,
+//             "number":32435457,
+//             "person":5,
+//             "price":2000
 
 
             
-        },
-        {
-            "name":"amaan",
-            "age":25,
-            "city":"mumbai",
-            "adharno":12354556,
-            "number":32435457,
-            "person":5,
-            "price":2000
+//         },
+//         {
+//             "name":"amaan",
+//             "age":25,
+//             "city":"mumbai",
+//             "adharno":12354556,
+//             "number":32435457,
+//             "person":5,
+//             "price":2000
 
 
             
-        }
-    ]
-}
+//         }
+//     ]
+// }
