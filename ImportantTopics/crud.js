@@ -6,14 +6,14 @@
 
 //fetch method data dikhatra hai but promise return karta hai 
 
-//let fetchData= ()=>{
-    //let url='http://localhost:3000/hotel' //yah pe data le rahe hai
+let fetchData= ()=>{
+    let url='http://localhost:3000/hotel' //yah pe data le rahe hai
 
-    //let res=fetch(url) //yaha data access kar rahe 
+    let res=fetch(url) //yaha data access kar rahe 
 
-    //console.log(res);
-    //isme pahle puara data ata nahi hai hum pahle hi dikhane ki koshis karte hai
-//}
+    console.log(res);
+    isme pahle puara data ata nahi hai hum pahle hi dikhane ki koshis karte hai
+}
 
 //fetchData()
 
