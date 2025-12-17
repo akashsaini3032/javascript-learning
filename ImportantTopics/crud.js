@@ -12,7 +12,7 @@ let fetchData= ()=>{
     let res=fetch(url) //yaha data access kar rahe 
 
     console.log(res);
-    isme pahle puara data ata nahi hai hum pahle hi dikhane ki koshis karte hai
+    //isme pahle puara data ata nahi hai hum pahle hi dikhane ki koshis karte hai
 }
 
 //fetchData()
