@@ -15,7 +15,7 @@ let fetchData= ()=>{
     //isme pahle puara data ata nahi hai hum pahle hi dikhane ki koshis karte hai
 }
 
-//fetchData()
+fetchData()
 
 //by default fetch method ka behaviou hai get karna
 //isiliye get likhns jaruri nahi optional hai
@@ -26,17 +26,17 @@ let fetchData= ()=>{
 
 
 
-let fetchData= async ()=>{
-    let url='http://localhost:3000/hotel' //yah pe data le rahe hai
+// let fetchData= async ()=>{
+//     let url='http://localhost:3000/hotel' //yah pe data le rahe hai
 
-    let res= await fetch(url) //yaha data access kar rahe 
-    let data= await res.json()
-    console.log(data);
+//     let res= await fetch(url) //yaha data access kar rahe 
+//     let data= await res.json()
+//     console.log(data);
 
 
-    //console.log(res);
-    //isme pahle puara data ata nahi hai hum pahle hi dikhane ki koshis karte hai
-}
+//     console.log(res);
+//     //isme pahle puara data ata nahi hai hum pahle hi dikhane ki koshis karte hai
+// }
 
 fetchData()
 
